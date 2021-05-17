@@ -8,8 +8,23 @@ class CoursesWidget extends StatefulWidget {
 }
 
 class _CoursesWidgetState extends State<CoursesWidget> {
-  Widget _renderCourses() {
-    return Text("data");
+  Widget _renderBranches() {
+    return ListView(
+      padding: const EdgeInsets.all(8),
+      children: <Widget>[
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(
+              child: Text('Electronics and Communication Engineering')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Computer Science and Engineering')),
+        ),
+      ],
+    );
   }
 
   @override
@@ -19,7 +34,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
         title: Text("SGPA Calculator"),
         centerTitle: true,
       ),
-      body: _renderCourses(),
+      body: _renderBranches(),
     );
   }
 }
