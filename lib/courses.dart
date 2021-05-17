@@ -8,6 +8,8 @@ class CoursesWidget extends StatefulWidget {
 }
 
 class _CoursesWidgetState extends State<CoursesWidget> {
+  final _eceCourse = {};
+  final _cseCourse = {};
   Widget _renderBranches() {
     return Container(
       decoration: BoxDecoration(
@@ -28,7 +30,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                 child: ListTile(
                   title: Center(
                       child: Text("Electronics and Communication Engineering")),
-                  onTap: () => {_individialCoursePage()},
+                  onTap: () => {_individialCoursePage(_eceCourse)},
                 ),
               )),
           Container(
@@ -40,7 +42,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                 child: ListTile(
                   title:
                       Center(child: Text("Computer Science and Engineering")),
-                  onTap: () => {_individialCoursePage()},
+                  onTap: () => {_individialCoursePage(_cseCourse)},
                 ),
               )),
         ],
@@ -61,12 +63,13 @@ class _CoursesWidgetState extends State<CoursesWidget> {
     );
   }
 
-  _individialCoursePage() {
+  _individialCoursePage(courses) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("HELLO"),
+            title: Text("SGPA Calculator"),
+            centerTitle: true,
           ),
         );
       },
