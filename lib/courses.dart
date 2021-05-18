@@ -9,21 +9,13 @@ class CoursesWidget extends StatefulWidget {
 
 class _CoursesWidgetState extends State<CoursesWidget> {
   final _eceCourse = {
-    "EC501PC - Microprocessors & Microcontrollers": 4,
+    "Microprocessors & Microcontrollers": 4,
     "Control Systems": 4,
     "Business Economics & Financial Analysis": 3,
     "Professional Elective": 3,
     "Microprocessors & Microcontrollers lab": 1.5,
     "Data Communications and Networks lab": 1.5,
     "Advanced Communication Skills Lab": 1
-
-// 2 EC502PC Data Communications and Networks 3 1 0 4
-// 3 EC503PC Control Systems 3 1 0 4
-// 4 SM504MS Business Economics & Financial Analysis 3 0 0 3
-// 5 Professional Elective - I 3 0 0 3
-// 6 EC505PC Microprocessors & Microcontrollers Lab 0 0 3 1.5
-// 7 EC506PC Data Communications and Networks Lab 0 0 3 1.5
-// 8 EN508HS Advanced Communication Skills Lab 0 0 2 1
   };
 
   final _cseCourse = {
@@ -89,38 +81,61 @@ class _CoursesWidgetState extends State<CoursesWidget> {
     );
   }
 
-  _individialCoursePage(courses) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (BuildContext context) {
-        return Scaffold(
-            appBar: AppBar(
-              title: Text("SGPA Calculator"),
-              centerTitle: true,
-            ),
-            body: _buildCoursesList(courses));
-      },
-    ));
+  _individialCoursePage(Map<String, num> courses) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("SGPA Calculator"),
+          centerTitle: true,
+        ),
+        body: _buildCoursesList(courses),
+        persistentFooterButtons: [
+          Row(
+            children: [
+              TextButton(
+                child: Text("Calculate"),
+                onPressed: () {},
+              )
+            ],
+          )
+        ],
+      );
+    }));
   }
 
-  Widget _buildCoursesList(courses) {
-    // print(courses);
-    final tiles = [];
-
-    courses.forEach((k, v) => {
-          tiles.add(ListTile(
-            title: Text("KEY : $k and Value : $v"),
-          ))
-        });
-
-    // final divided =
-    //     ListTile.divideTiles(context: context, tiles: tiles).toList();
-
-    // final divided = tiles.isNotEmpty
-    //     ? ListTile.divideTiles(context: context, tiles: tiles).toList()
-    //     : <Widget>[];
-
-    return Column(
-      children: tiles,
+  Widget _buildCoursesList(Map<String, num> courses) {
+    print(courses);
+    final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
+    return ListView.builder(
+      itemCount: courses.length,
+      itemBuilder: (BuildContext context, int index) {
+        String key = courses.keys.elementAt(index);
+        return Column(
+          children: <Widget>[
+            ListTile(
+              title: Text("$key"),
+              subtitle: Text("Credits: ${courses[key]}"),
+              trailing: DropdownButton<String>(
+                value: "F",
+                items: _grades.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (_) {},
+              ),
+            ),
+            Divider(
+              height: 10.0,
+            ),
+          ],
+        );
+      },
     );
+    // return Column(
+    //   children: <Widget>[Text("Hello")],
+    // );
   }
 }
