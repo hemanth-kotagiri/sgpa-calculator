@@ -105,26 +105,31 @@ class _CoursesWidgetState extends State<CoursesWidget> {
   }
 
   Widget _buildCoursesList(Map<String, num> courses) {
-    print(courses);
-    final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
+    // print(courses);
     return ListView.builder(
       itemCount: courses.length,
       itemBuilder: (BuildContext context, int index) {
         String key = courses.keys.elementAt(index);
+        final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
+        String defaultValue = "F";
         return Column(
           children: <Widget>[
             ListTile(
               title: Text("$key"),
               subtitle: Text("Credits: ${courses[key]}"),
-              trailing: DropdownButton<String>(
-                value: "F",
-                items: _grades.map((String value) {
+              leading: DropdownButton<String>(
+                value: defaultValue,
+                onChanged: (newValue) {
+                  setState(() {
+                    defaultValue = newValue;
+                  });
+                },
+                items: _grades.map((String grade) {
                   return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
+                    value: grade,
+                    child: Text(grade),
                   );
                 }).toList(),
-                onChanged: (_) {},
               ),
             ),
             Divider(
@@ -134,8 +139,5 @@ class _CoursesWidgetState extends State<CoursesWidget> {
         );
       },
     );
-    // return Column(
-    //   children: <Widget>[Text("Hello")],
-    // );
   }
 }
