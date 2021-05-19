@@ -91,16 +91,16 @@ class _CoursesWidgetState extends State<CoursesWidget> {
           centerTitle: true,
         ),
         body: BuildCoursesList(grades: _grades, courses: courses),
-        persistentFooterButtons: [
-          Row(
-            children: [
-              TextButton(
-                child: Text("Calculate"),
-                onPressed: () {},
-              )
-            ],
-          )
-        ],
+        // persistentFooterButtons: [
+        //   Row(
+        //     children: [
+        //       TextButton(
+        //         child: Text("Calculate"),
+        //         onPressed: () {},
+        //       )
+        //     ],
+        //   )
+        // ],
       );
     }));
   }
@@ -123,42 +123,89 @@ class BuildCoursesList extends StatefulWidget {
 
 class _BuildCoursesListState extends State<BuildCoursesList> {
   List<String> defaultValues = ["F", "F", "F", "F", "F", "F", "F", "F"];
+
+  alertGPA(BuildContext context) {
+    // Calculate the grade
+    double totalCreditsGained = 0;
+    double creditDenomination = 0;
+
+    for (var i = 0; i < widget.courses.length; i++) {
+      double currentCredit = widget.courses.values.elementAt(i).toDouble();
+
+      creditDenomination += currentCredit;
+
+      totalCreditsGained += currentCredit * _gradeScores[defaultValues[i]];
+    }
+
+    double gpa =
+        num.parse((totalCreditsGained / creditDenomination).toStringAsFixed(2));
+    // Render the pop-up here
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Your SGPA is : $gpa"),
+          );
+        });
+  }
+
+  final _gradeScores = {
+    "O": 10,
+    "A+": 9,
+    "A": 8,
+    "B+": 7,
+    "B": 6,
+    "C": 5,
+    "F": 0,
+  };
+
   @override
   Widget build(BuildContext context) {
     // print(courses);
-    return Center(
-      child: ListView.builder(
-        itemCount: widget.courses.length,
-        itemBuilder: (BuildContext context, int index) {
-          String key = widget.courses.keys.elementAt(index);
-          return Column(
-            children: <Widget>[
-              ListTile(
-                title: Text("$key"),
-                subtitle: Text("Credits: ${widget.courses[key]}"),
-                leading: DropdownButton(
-                  value: defaultValues[index],
-                  items: widget._grades.map((String grade) {
-                    return DropdownMenuItem<String>(
-                      value: grade,
-                      child: Text(grade),
-                    );
-                  }).toList(),
-                  onChanged: (newValue) {
-                    setState(() {
-                      defaultValues[index] = newValue;
-                      print(defaultValues);
-                    });
-                  },
-                ),
-              ),
-              Divider(
-                height: 10.0,
-              ),
-            ],
-          );
-        },
-      ),
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: widget.courses.length,
+            itemBuilder: (BuildContext context, int index) {
+              String key = widget.courses.keys.elementAt(index);
+              return Column(
+                children: <Widget>[
+                  ListTile(
+                    title: Text("$key"),
+                    subtitle: Text("Credits: ${widget.courses[key]}"),
+                    leading: DropdownButton(
+                      value: defaultValues[index],
+                      items: widget._grades.map((String grade) {
+                        return DropdownMenuItem<String>(
+                          value: grade,
+                          child: Text(grade),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          defaultValues[index] = newValue;
+                        });
+                      },
+                    ),
+                  ),
+                  Divider(
+                    height: 10.0,
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            alertGPA(context);
+          },
+          child: Text("Calculate"),
+        )
+      ],
     );
   }
 }
