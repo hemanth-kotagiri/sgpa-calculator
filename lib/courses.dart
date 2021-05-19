@@ -8,6 +8,7 @@ class CoursesWidget extends StatefulWidget {
 }
 
 class _CoursesWidgetState extends State<CoursesWidget> {
+  final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
   final _eceCourse = {
     "Microprocessors & Microcontrollers": 4,
     "Control Systems": 4,
@@ -89,7 +90,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
           title: Text("SGPA Calculator"),
           centerTitle: true,
         ),
-        body: _buildCoursesList(courses),
+        body: BuildCoursesList(grades: _grades, courses: courses),
         persistentFooterButtons: [
           Row(
             children: [
@@ -103,41 +104,61 @@ class _CoursesWidgetState extends State<CoursesWidget> {
       );
     }));
   }
+}
 
-  Widget _buildCoursesList(Map<String, num> courses) {
+class BuildCoursesList extends StatefulWidget {
+  const BuildCoursesList({
+    Key key,
+    @required List<String> grades,
+    @required this.courses,
+  })  : _grades = grades,
+        super(key: key);
+
+  final List<String> _grades;
+  final Map<String, num> courses;
+
+  @override
+  _BuildCoursesListState createState() => _BuildCoursesListState();
+}
+
+class _BuildCoursesListState extends State<BuildCoursesList> {
+  List<String> defaultValues = ["F", "F", "F", "F", "F", "F", "F", "F"];
+  @override
+  Widget build(BuildContext context) {
     // print(courses);
-    return ListView.builder(
-      itemCount: courses.length,
-      itemBuilder: (BuildContext context, int index) {
-        String key = courses.keys.elementAt(index);
-        final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
-        String defaultValue = "F";
-        return Column(
-          children: <Widget>[
-            ListTile(
-              title: Text("$key"),
-              subtitle: Text("Credits: ${courses[key]}"),
-              leading: DropdownButton<String>(
-                value: defaultValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    defaultValue = newValue;
-                  });
-                },
-                items: _grades.map((String grade) {
-                  return DropdownMenuItem<String>(
-                    value: grade,
-                    child: Text(grade),
-                  );
-                }).toList(),
+    return Center(
+      child: ListView.builder(
+        itemCount: widget.courses.length,
+        itemBuilder: (BuildContext context, int index) {
+          String key = widget.courses.keys.elementAt(index);
+          return Column(
+            children: <Widget>[
+              ListTile(
+                title: Text("$key"),
+                subtitle: Text("Credits: ${widget.courses[key]}"),
+                leading: DropdownButton(
+                  value: defaultValues[index],
+                  items: widget._grades.map((String grade) {
+                    return DropdownMenuItem<String>(
+                      value: grade,
+                      child: Text(grade),
+                    );
+                  }).toList(),
+                  onChanged: (newValue) {
+                    setState(() {
+                      defaultValues[index] = newValue;
+                      print(defaultValues);
+                    });
+                  },
+                ),
               ),
-            ),
-            Divider(
-              height: 10.0,
-            ),
-          ],
-        );
-      },
+              Divider(
+                height: 10.0,
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
