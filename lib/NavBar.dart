@@ -26,7 +26,10 @@ class NavBar extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.code_rounded),
+            leading: Icon(
+              Icons.code_rounded,
+              color: Colors.black,
+            ),
             title: Text("Open Source App"),
             subtitle: Text("Tap to go to repository"),
             onTap: () {
@@ -34,7 +37,10 @@ class NavBar extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.person),
+            leading: Icon(
+              Icons.person,
+              color: Colors.black,
+            ),
             title: Text("Hemanth Kotagiri"),
             subtitle: Text("Developer"),
             onTap: () {
@@ -42,12 +48,18 @@ class NavBar extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.email),
+            leading: Icon(
+              Icons.email,
+              color: Colors.black,
+            ),
             title: Text("Email"),
             subtitle: Text("hemanth.kotagiri43@gmail.com"),
           ),
           ListTile(
-            leading: Icon(Icons.animation),
+            leading: Icon(
+              Icons.animation,
+              color: Colors.black,
+            ),
             title: Text("License"),
             subtitle: Text("MIT"),
           ),

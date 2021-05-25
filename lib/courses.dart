@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/NavBar.dart';
 
@@ -90,7 +92,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("SGPA Calculator"),
+          title: Text("SGPA Calculator for 3,1"),
           centerTitle: true,
         ),
         body: BuildCoursesList(grades: _grades, courses: courses),
@@ -137,7 +139,8 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Your SGPA is : $gpa"),
+            // backgroundColor: Colors.blueAccent,
+            title: Text("Calculated SGPA : $gpa"),
           );
         });
   }
