@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sgpa_calc/NavBar.dart';
 
 class CoursesWidget extends StatefulWidget {
   CoursesWidget({Key key}) : super(key: key);
@@ -29,11 +30,12 @@ class _CoursesWidgetState extends State<CoursesWidget> {
     "Computer Networks and Web Technologies Lab": 1.5,
     "Advanced Communication Skills Lab": 1
   };
+
   Widget _renderBranches() {
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.blue, Colors.red],
+              colors: [Colors.teal, Colors.red],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft)),
       child: Column(
@@ -72,6 +74,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
         title: Text("SGPA Calculator"),
         centerTitle: true,
@@ -91,16 +94,6 @@ class _CoursesWidgetState extends State<CoursesWidget> {
           centerTitle: true,
         ),
         body: BuildCoursesList(grades: _grades, courses: courses),
-        // persistentFooterButtons: [
-        //   Row(
-        //     children: [
-        //       TextButton(
-        //         child: Text("Calculate"),
-        //         onPressed: () {},
-        //       )
-        //     ],
-        //   )
-        // ],
       );
     }));
   }
@@ -176,7 +169,7 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
                   ListTile(
                     title: Text("$key"),
                     subtitle: Text("Credits: ${widget.courses[key]}"),
-                    leading: DropdownButton(
+                    trailing: DropdownButton(
                       value: defaultValues[index],
                       items: widget._grades.map((String grade) {
                         return DropdownMenuItem<String>(

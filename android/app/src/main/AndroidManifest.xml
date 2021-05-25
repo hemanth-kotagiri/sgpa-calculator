@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sgpa_calc">
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
    <application
-        android:label="sgpa_calc"
+        android:label="SGPA Calculator"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
