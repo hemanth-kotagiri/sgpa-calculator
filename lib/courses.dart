@@ -14,6 +14,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
   final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
   final _eceCourse = {
     "Microprocessors & Microcontrollers": 4,
+    "Data Communications and Networks": 4,
     "Control Systems": 4,
     "Business Economics & Financial Analysis": 3,
     "Professional Elective": 3,
@@ -26,6 +27,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
     "Formal Languages and Automata Theory": 3,
     "Software Engineering": 3,
     "Computer Networks": 3,
+    "Web Technologies": 3,
     "Professional Elective 1": 3,
     "Professional Elective 2": 3,
     "Software Engineering Lab": 1.5,
@@ -117,7 +119,7 @@ class BuildCoursesList extends StatefulWidget {
 }
 
 class _BuildCoursesListState extends State<BuildCoursesList> {
-  List<String> defaultValues = ["F", "F", "F", "F", "F", "F", "F", "F"];
+  List<String> defaultValues = ["F", "F", "F", "F", "F", "F", "F", "F", "F"];
 
   alertGPA(BuildContext context) {
     // Calculate the grade
@@ -183,6 +185,7 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
                       onChanged: (newValue) {
                         setState(() {
                           defaultValues[index] = newValue;
+                          print(defaultValues);
                         });
                       },
                     ),
