@@ -6,7 +6,7 @@
   <img src="images/img3.png" alt="Image 3" width="260">
 </p>
 
-### A cross-platform native application built using Flutter to calculate stream-specific GPA.
+### A cross-platform application built using Flutter to calculate stream-specific GPA.
 
 As of now, this application is specifically targetted to Junior Year students of JNTUH of those who are in R18 Regulation.
 
