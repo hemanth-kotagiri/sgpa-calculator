@@ -120,6 +120,9 @@ class BuildCoursesList extends StatefulWidget {
 
 class _BuildCoursesListState extends State<BuildCoursesList> {
   List<String> defaultValues = ["F", "F", "F", "F", "F", "F", "F", "F", "F"];
+  List<String> failedSubjects = [];
+  Widget _alertText;
+  Widget _content;
 
   alertGPA(BuildContext context) {
     // Calculate the grade
@@ -131,18 +134,30 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
 
       creditDenomination += currentCredit;
 
+      if (_gradeScores[defaultValues[i]] == 0) {
+        totalCreditsGained = 0;
+        failedSubjects.add(widget.courses.keys.elementAt(i));
+      }
       totalCreditsGained += currentCredit * _gradeScores[defaultValues[i]];
     }
 
     double gpa =
         num.parse((totalCreditsGained / creditDenomination).toStringAsFixed(2));
+    if (gpa != 0) {
+      _alertText = Center(child: Text("PASS"));
+      _content = Text("Calculated SGPA: $gpa");
+    } else {
+      _alertText = Center(child: Text("FAIL"));
+      _content = Text("Sorry, better luck next time. Don't give up!");
+    }
     // Render the pop-up here
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
             // backgroundColor: Colors.blueAccent,
-            title: Text("Calculated SGPA : $gpa"),
+            title: _alertText,
+            content: _content,
           );
         });
   }
