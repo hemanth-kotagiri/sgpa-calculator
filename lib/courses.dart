@@ -120,7 +120,6 @@ class BuildCoursesList extends StatefulWidget {
 
 class _BuildCoursesListState extends State<BuildCoursesList> {
   List<String> defaultValues = ["F", "F", "F", "F", "F", "F", "F", "F", "F"];
-  List<String> failedSubjects = [];
   Widget _alertText;
   Widget _content;
 
@@ -136,7 +135,7 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
 
       if (_gradeScores[defaultValues[i]] == 0) {
         totalCreditsGained = 0;
-        failedSubjects.add(widget.courses.keys.elementAt(i));
+        break;
       }
       totalCreditsGained += currentCredit * _gradeScores[defaultValues[i]];
     }
