@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/NavBar.dart';
 
@@ -12,28 +10,51 @@ class CoursesWidget extends StatefulWidget {
 
 class _CoursesWidgetState extends State<CoursesWidget> {
   final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
-  final _eceCourse = {
-    "Microprocessors & Microcontrollers": 4,
-    "Data Communications and Networks": 4,
-    "Control Systems": 4,
-    "Business Economics & Financial Analysis": 3,
-    "Professional Elective": 3,
-    "Microprocessors & Microcontrollers lab": 1.5,
-    "Data Communications and Networks lab": 1.5,
-    "Advanced Communication Skills Lab": 1
+  final _courses = {
+      "Electronics and Communication Engineering": {
+        "Microprocessors & Microcontrollers": 4,
+        "Data Communications and Networks": 4,
+        "Control Systems": 4,
+        "Business Economics & Financial Analysis": 3,
+        "Professional Elective": 3,
+        "Microprocessors & Microcontrollers lab": 1.5,
+        "Data Communications and Networks lab": 1.5,
+        "Advanced Communication Skills Lab": 1
+      },
+      "Computer Science and Engineering": {
+        "Formal Languages and Automata Theory": 3,
+        "Software Engineering": 3,
+        "Computer Networks": 3,
+        "Web Technologies": 3,
+        "Professional Elective 1": 3,
+        "Professional Elective 2": 3,
+        "Software Engineering Lab": 1.5,
+        "Computer Networks and Web Technologies Lab": 1.5,
+        "Advanced Communication Skills Lab": 1
+      }
   };
+  //final _eceCourse = {
+    //"Microprocessors & Microcontrollers": 4,
+    //"Data Communications and Networks": 4,
+    //"Control Systems": 4,
+    //"Business Economics & Financial Analysis": 3,
+    //"Professional Elective": 3,
+    //"Microprocessors & Microcontrollers lab": 1.5,
+    //"Data Communications and Networks lab": 1.5,
+    //"Advanced Communication Skills Lab": 1
+  //};
 
-  final _cseCourse = {
-    "Formal Languages and Automata Theory": 3,
-    "Software Engineering": 3,
-    "Computer Networks": 3,
-    "Web Technologies": 3,
-    "Professional Elective 1": 3,
-    "Professional Elective 2": 3,
-    "Software Engineering Lab": 1.5,
-    "Computer Networks and Web Technologies Lab": 1.5,
-    "Advanced Communication Skills Lab": 1
-  };
+  //final _cseCourse = {
+    //"Formal Languages and Automata Theory": 3,
+    //"Software Engineering": 3,
+    //"Computer Networks": 3,
+    //"Web Technologies": 3,
+    //"Professional Elective 1": 3,
+    //"Professional Elective 2": 3,
+    //"Software Engineering Lab": 1.5,
+    //"Computer Networks and Web Technologies Lab": 1.5,
+    //"Advanced Communication Skills Lab": 1
+  //};
 
   Widget _renderBranches() {
     return Container(
