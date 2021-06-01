@@ -10,7 +10,7 @@ class CoursesWidget extends StatefulWidget {
 
 class _CoursesWidgetState extends State<CoursesWidget> {
   final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
-  final _courses = {
+  final _branchCourses = {
       "Electronics and Communication Engineering": {
         "Microprocessors & Microcontrollers": 4,
         "Data Communications and Networks": 4,
@@ -31,30 +31,19 @@ class _CoursesWidgetState extends State<CoursesWidget> {
         "Software Engineering Lab": 1.5,
         "Computer Networks and Web Technologies Lab": 1.5,
         "Advanced Communication Skills Lab": 1
+      },
+      "Mechanical Engineering": {
+        "Dynamics of Machinery": 4,
+        "Design of Machine Members-I": 3,
+        "Metrology & Machine Tools": 3,
+        "Business Economics & Financial Analysis": 3,
+        "Thermal Engineering-II": 3,
+        "Operations Research": 3,
+        "Thermal Engineering Lab": 1,
+        "Metrology & Machine Tools Lab": 1,
+        "Kinematics & Dynamics Lab": 1
       }
   };
-  //final _eceCourse = {
-    //"Microprocessors & Microcontrollers": 4,
-    //"Data Communications and Networks": 4,
-    //"Control Systems": 4,
-    //"Business Economics & Financial Analysis": 3,
-    //"Professional Elective": 3,
-    //"Microprocessors & Microcontrollers lab": 1.5,
-    //"Data Communications and Networks lab": 1.5,
-    //"Advanced Communication Skills Lab": 1
-  //};
-
-  //final _cseCourse = {
-    //"Formal Languages and Automata Theory": 3,
-    //"Software Engineering": 3,
-    //"Computer Networks": 3,
-    //"Web Technologies": 3,
-    //"Professional Elective 1": 3,
-    //"Professional Elective 2": 3,
-    //"Software Engineering Lab": 1.5,
-    //"Computer Networks and Web Technologies Lab": 1.5,
-    //"Advanced Communication Skills Lab": 1
-  //};
 
   Widget _renderBranches() {
     return Container(
@@ -67,32 +56,31 @@ class _CoursesWidgetState extends State<CoursesWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         // padding: const EdgeInsets.all(8),
         children: <Widget>[
-          Container(
-              margin: EdgeInsets.all(20),
-              // padding: const EdgeInsets.all(8),
-              height: 100,
-              color: Colors.amber[500],
-              child: Center(
-                child: ListTile(
-                  title: Center(
-                      child: Text("Electronics and Communication Engineering")),
-                  onTap: () => {_individialCoursePage(_eceCourse)},
-                ),
-              )),
-          Container(
-              margin: EdgeInsets.all(20),
-              padding: const EdgeInsets.all(11),
-              height: 100,
-              color: Colors.amber[500],
-              child: Center(
-                child: ListTile(
-                  title:
-                      Center(child: Text("Computer Science and Engineering")),
-                  onTap: () => {_individialCoursePage(_cseCourse)},
-                ),
-              )),
-        ],
-      ),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: _branchCourses.length, //widget.courses.length,
+              itemBuilder: (BuildContext context, int index) {
+                String key = _branchCourses.keys.elementAt(index);
+                return Container(
+                 margin: EdgeInsets.all(20),
+                // padding: const EdgeInsets.all(8),
+                height: 100,
+                color: Colors.amber[500],
+                child: Center(
+                  child: ListTile(
+                    title: Center(
+                        child: Text("$key")),
+                    onTap: () => {_individialCoursePage(_branchCourses.values.elementAt(index))},
+                  ),
+                )                   
+                );
+              },
+            ),
+          )
+        ]
+      )
     );
   }
 
