@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/NavBar.dart';
+import 'constants.dart';
 
 class CoursesWidget extends StatefulWidget {
   CoursesWidget({Key key}) : super(key: key);
@@ -9,78 +10,46 @@ class CoursesWidget extends StatefulWidget {
 }
 
 class _CoursesWidgetState extends State<CoursesWidget> {
-  final _grades = <String>["O", "A+", "A", "B+", "B", "C", "F"];
-  final _branchCourses = {
-      "Electronics and Communication Engineering": {
-        "Microprocessors & Microcontrollers": 4,
-        "Data Communications and Networks": 4,
-        "Control Systems": 4,
-        "Business Economics & Financial Analysis": 3,
-        "Professional Elective": 3,
-        "Microprocessors & Microcontrollers lab": 1.5,
-        "Data Communications and Networks lab": 1.5,
-        "Advanced Communication Skills Lab": 1
-      },
-      "Computer Science and Engineering": {
-        "Formal Languages and Automata Theory": 3,
-        "Software Engineering": 3,
-        "Computer Networks": 3,
-        "Web Technologies": 3,
-        "Professional Elective 1": 3,
-        "Professional Elective 2": 3,
-        "Software Engineering Lab": 1.5,
-        "Computer Networks and Web Technologies Lab": 1.5,
-        "Advanced Communication Skills Lab": 1
-      },
-      "Mechanical Engineering": {
-        "Dynamics of Machinery": 4,
-        "Design of Machine Members-I": 3,
-        "Metrology & Machine Tools": 3,
-        "Business Economics & Financial Analysis": 3,
-        "Thermal Engineering-II": 3,
-        "Operations Research": 3,
-        "Thermal Engineering Lab": 1,
-        "Metrology & Machine Tools Lab": 1,
-        "Kinematics & Dynamics Lab": 1
-      }
-  };
-
   Widget _renderBranches() {
     return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.teal, Colors.red],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft)),
+       //decoration: BoxDecoration(
+         //gradient: LinearGradient(
+             //colors: [Colors.teal, Colors.red],
+             //begin: Alignment.topRight,
+             //end: Alignment.bottomLeft),
+       //),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        // padding: const EdgeInsets.all(8),
         children: <Widget>[
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: _branchCourses.length, //widget.courses.length,
+              itemCount: branchCourses.length,
               itemBuilder: (BuildContext context, int index) {
-                String key = _branchCourses.keys.elementAt(index);
+                String key = branchCourses.keys.elementAt(index);
                 return Container(
-                 margin: EdgeInsets.all(20),
-                // padding: const EdgeInsets.all(8),
-                height: 100,
-                color: Colors.amber[500],
-                child: Center(
-                  child: ListTile(
-                    title: Center(
-                        child: Text("$key")),
-                    onTap: () => {_individialCoursePage(_branchCourses.values.elementAt(index))},
-                  ),
-                )                   
-                );
+                    margin: EdgeInsets.all(20),
+                    height: 100,
+                    color: Colors.amber[300],
+                    child: Center(
+                      child: ListTile(
+                        title: Center(
+                            child: Text(
+                          "$key",
+                          style: TextStyle(color: Colors.black),
+                        )),
+                        onTap: () => {
+                          _individialCoursePage(
+                              branchCourses.values.elementAt(index))
+                        },
+                      ),
+                    ));
               },
             ),
           )
-        ]
-      )
+        ],
+      ),
     );
   }
 
@@ -106,7 +75,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
           title: Text("SGPA Calculator for 3,1"),
           centerTitle: true,
         ),
-        body: BuildCoursesList(grades: _grades, courses: courses),
+        body: BuildCoursesList(grades: grades, courses: courses),
       );
     }));
   }
@@ -142,11 +111,11 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
 
       creditDenomination += currentCredit;
 
-      if (_gradeScores[defaultValues[i]] == 0) {
+      if (gradeScores[defaultValues[i]] == 0) {
         totalCreditsGained = 0;
         break;
       }
-      totalCreditsGained += currentCredit * _gradeScores[defaultValues[i]];
+      totalCreditsGained += currentCredit * gradeScores[defaultValues[i]];
     }
 
     double gpa =
@@ -169,16 +138,6 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
           );
         });
   }
-
-  final _gradeScores = {
-    "O": 10,
-    "A+": 9,
-    "A": 8,
-    "B+": 7,
-    "B": 6,
-    "C": 5,
-    "F": 0,
-  };
 
   @override
   Widget build(BuildContext context) {

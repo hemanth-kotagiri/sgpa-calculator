@@ -28,7 +28,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.code_rounded,
-              color: Colors.black,
+              color: Colors.white,
             ),
             title: Text("Open Source App"),
             subtitle: Text("Tap to go to repository"),
@@ -39,7 +39,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.person,
-              color: Colors.black,
+              color: Colors.white,
             ),
             title: Text("Hemanth Kotagiri"),
             subtitle: Text("Developer"),
@@ -50,7 +50,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.email,
-              color: Colors.black,
+              color: Colors.white,
             ),
             title: Text("Email"),
             subtitle: Text("hemanth.kotagiri43@gmail.com"),
@@ -58,7 +58,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.animation,
-              color: Colors.black,
+              color: Colors.white,
             ),
             title: Text("License"),
             subtitle: Text("MIT"),
