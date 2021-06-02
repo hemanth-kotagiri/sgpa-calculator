@@ -24,6 +24,7 @@ class _MyAppState extends State<MyApp> {
         primaryColorDark: Color(0xff242B2E),
       ),
       home: CoursesWidget(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
