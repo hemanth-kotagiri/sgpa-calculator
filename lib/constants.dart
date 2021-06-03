@@ -76,14 +76,14 @@ final branchCourses = {
     "Kinematics & Dynamics Lab": 1
   },
   "Civil Engineering": {
-    "CE501 Structural Analysis-II": 3,
-    "CE502PC Geotechnical Engineering": 3,
-    "CE503PC Structural Engineering –I (RCC)": 4,
-    "CE504PC Transportation Engineering": 3,
+    "Structural Analysis-II": 3,
+    "Geotechnical Engineering": 3,
+    "Structural Engineering –I (RCC)": 4,
+    "Transportation Engineering": 3,
     "Professional Elective-I ": 3,
-    "SM505MS Engineering Economics and Accountancy ": 2,
-    "CE506PC Highway Engineering and Concrete Technology Lab ": 1.5,
-    "CE507PC Geotechnical Engineering Lab": 1.5,
-    "EN508HS Advanced Communication Skills Lab": 1,
+    "Engineering Economics and Accountancy ": 2,
+    "Highway Engineering and Concrete Technology Lab ": 1.5,
+    "Geotechnical Engineering Lab": 1.5,
+    "Advanced Communication Skills Lab": 1,
   }
 };
