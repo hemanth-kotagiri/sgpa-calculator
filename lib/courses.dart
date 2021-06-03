@@ -12,12 +12,12 @@ class CoursesWidget extends StatefulWidget {
 class _CoursesWidgetState extends State<CoursesWidget> {
   Widget _renderBranches() {
     return Container(
-       //decoration: BoxDecoration(
-         //gradient: LinearGradient(
-             //colors: [Colors.teal, Colors.red],
-             //begin: Alignment.topRight,
-             //end: Alignment.bottomLeft),
-       //),
+      //decoration: BoxDecoration(
+      //gradient: LinearGradient(
+      //colors: [Colors.teal, Colors.red],
+      //begin: Alignment.topRight,
+      //end: Alignment.bottomLeft),
+      //),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -58,7 +58,10 @@ class _CoursesWidgetState extends State<CoursesWidget> {
     return Scaffold(
       drawer: NavBar(),
       appBar: AppBar(
-        title: Text("SGPA Calculator"),
+        title: Text(
+          "SGPA Calculator",
+          style: TextStyle(color: Colors.cyan),
+        ),
         centerTitle: true,
       ),
       body: Center(
@@ -72,7 +75,10 @@ class _CoursesWidgetState extends State<CoursesWidget> {
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("SGPA Calculator for 3,1"),
+          title: Text(
+            "SGPA Calculator for 3,1",
+            style: TextStyle(color: Colors.cyan),
+          ),
           centerTitle: true,
         ),
         body: BuildCoursesList(grades: grades, courses: courses),
@@ -155,7 +161,12 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
                 children: <Widget>[
                   ListTile(
                     title: Text("$key"),
-                    subtitle: Text("Credits: ${widget.courses[key]}"),
+                    subtitle: Text(
+                      "Credits: ${widget.courses[key]}",
+                      style: TextStyle(
+                        color: Colors.green,
+                      ),
+                    ),
                     trailing: DropdownButton(
                       value: defaultValues[index],
                       items: widget._grades.map((String grade) {
@@ -174,6 +185,7 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
                   ),
                   Divider(
                     height: 10.0,
+                    thickness: 1.0,
                   ),
                 ],
               );
