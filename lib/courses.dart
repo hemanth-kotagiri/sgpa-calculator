@@ -24,15 +24,16 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                 String key = branchCourses.keys.elementAt(index);
                 return Container(
                     margin: EdgeInsets.all(20),
-                    height: 100,
+                    height: 70,
                     color: Colors.amber[300],
                     child: Center(
                       child: ListTile(
                         title: Center(
-                            child: Text(
-                          "$key",
-                          style: TextStyle(color: Colors.black),
-                        )),
+                          child: Text(
+                            "$key",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
                         onTap: () => {
                           _individialCoursePage(
                               branchCourses.values.elementAt(index))
@@ -201,7 +202,12 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
           onPressed: () {
             alertGPA(context);
           },
-          child: Text("Calculate"),
+          child: Text(
+            "Calculate",
+            style: TextStyle(
+              fontSize: 17,
+            ),
+          ),
         )
       ],
     );
