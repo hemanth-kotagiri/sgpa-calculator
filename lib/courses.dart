@@ -12,12 +12,6 @@ class CoursesWidget extends StatefulWidget {
 class _CoursesWidgetState extends State<CoursesWidget> {
   Widget _renderBranches() {
     return Container(
-      //decoration: BoxDecoration(
-      //gradient: LinearGradient(
-      //colors: [Colors.teal, Colors.red],
-      //begin: Alignment.topRight,
-      //end: Alignment.bottomLeft),
-      //),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -127,10 +121,23 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
     double gpa =
         num.parse((totalCreditsGained / creditDenomination).toStringAsFixed(2));
     if (gpa != 0) {
-      _alertText = Center(child: Text("PASS"));
+      _alertText = Center(
+          child: Text(
+        "PASS",
+        style: TextStyle(
+          color: Colors.green,
+        ),
+      ));
       _content = Text("Calculated SGPA: $gpa");
     } else {
-      _alertText = Center(child: Text("FAIL"));
+      _alertText = Center(
+        child: Text(
+          "FAIL",
+          style: TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      );
       _content = Text("Sorry, better luck next time. Don't give up!");
     }
     // Render the pop-up here
@@ -163,9 +170,7 @@ class _BuildCoursesListState extends State<BuildCoursesList> {
                     title: Text("$key"),
                     subtitle: Text(
                       "Credits: ${widget.courses[key]}",
-                      style: TextStyle(
-                        color: Colors.green,
-                      ),
+                      style: TextStyle(color: Colors.green),
                     ),
                     trailing: DropdownButton(
                       value: defaultValues[index],
