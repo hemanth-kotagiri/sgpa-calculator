@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Widgets/ResultsFetcherWidget.dart';
 import 'Widgets/courses.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
         primaryColorLight: Color(0xff03203C),
         primaryColorDark: Color(0xff242B2E),
       ),
-      home: CoursesWidget(),
+      home: ResultsFetcherWidget(),
       debugShowCheckedModeBanner: false,
     );
   }
