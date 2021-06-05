@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './courses.dart';
+import 'Widgets/courses.dart';
 
 void main() {
   runApp(MyApp());
