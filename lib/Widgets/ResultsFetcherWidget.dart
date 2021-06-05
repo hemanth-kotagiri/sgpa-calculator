@@ -105,15 +105,31 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                                   );
                                 });
                           }
-                          setState(() {
-                            _isPressed = true;
-                          });
                           ResultFetcher fetcher = ResultFetcher(
                             hallticket: _hallticketController.text,
                             dob: _dobController.text,
                             year: _yearController.text,
                           );
-                          List result = await fetcher.fetchResult();
+                          setState(() {
+                            _isPressed = true;
+                          });
+                          List result;
+                          try {
+                            result = await fetcher.fetchResult();
+                          } catch (Exception) {
+                            setState(() {
+                              _isPressed = false;
+                            });
+                            return showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    // backgroundColor: Colors.blueAccent,
+                                    title:
+                                        Text("Please give valid input only!"),
+                                  );
+                                });
+                          }
                           _resultsPage(result);
                         }
                       : null,
