@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sgpa_calc/Widgets/ResultsPageWidget.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
 
 class ResultsFetcherWidget extends StatefulWidget {
@@ -14,6 +15,7 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
   TextEditingController _hallticketController = TextEditingController();
   TextEditingController _dobController = TextEditingController();
   TextEditingController _yearController = TextEditingController();
+  bool _isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -89,16 +91,32 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
               ),
               Divider(),
               ElevatedButton(
-                  onPressed: () async {
-                    ResultFetcher fetcher = ResultFetcher(
-                      hallticket: _hallticketController.text,
-                      dob: _dobController.text,
-                      year: _yearController.text,
-                    );
-
-                    List result = await fetcher.fetchResult();
-                    _resultsPage(result);
-                  },
+                  onPressed: _isPressed == false
+                      ? () async {
+                          if (_hallticketController.text == "" ||
+                              _yearController.text == "" ||
+                              _dobController.text == "") {
+                            return showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    // backgroundColor: Colors.blueAccent,
+                                    title: Text("Please give valid input"),
+                                  );
+                                });
+                          }
+                          setState(() {
+                            _isPressed = true;
+                          });
+                          ResultFetcher fetcher = ResultFetcher(
+                            hallticket: _hallticketController.text,
+                            dob: _dobController.text,
+                            year: _yearController.text,
+                          );
+                          List result = await fetcher.fetchResult();
+                          _resultsPage(result);
+                        }
+                      : null,
                   child: Text(
                     "Get Result",
                     style: TextStyle(
@@ -112,7 +130,10 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
     );
   }
 
-  _resultsPage(list<dynamic> result) {
+  _resultsPage(List<dynamic> result) {
+    setState(() {
+      _isPressed = false;
+    });
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return Scaffold(
@@ -123,7 +144,9 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
           ),
           centerTitle: true,
         ),
-        body: ResultsPageWidget(result: result),
+        body: ResultsPage(
+          result: result,
+        ),
       );
     }));
   }
