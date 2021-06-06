@@ -22,7 +22,10 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Text("Fetch Results"),
+        title: Text("Fetch Results",
+            style: TextStyle(
+              color: Colors.cyan,
+            )),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -85,7 +88,7 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                 controller: _yearController,
                 decoration: InputDecoration(
                   labelText: "Year,Sem",
-                  hintText: "Enter Here",
+                  hintText: "1,1",
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -101,7 +104,10 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                                 builder: (context) {
                                   return AlertDialog(
                                     // backgroundColor: Colors.blueAccent,
-                                    title: Text("Please give valid input"),
+                                    title: Center(
+                                      child: Text(
+                                          "Please provide valid input only."),
+                                    ),
                                   );
                                 });
                           }
@@ -125,8 +131,8 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                                 builder: (context) {
                                   return AlertDialog(
                                     // backgroundColor: Colors.blueAccent,
-                                    title:
-                                        Text("Please give valid input only!"),
+                                    title: Text(
+                                        "Please provide valid input only."),
                                   );
                                 });
                           }

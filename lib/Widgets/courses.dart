@@ -24,23 +24,24 @@ class _CoursesWidgetState extends State<CoursesWidget> {
               itemBuilder: (BuildContext context, int index) {
                 String key = branchCourses.keys.elementAt(index);
                 return Container(
-                    margin: EdgeInsets.all(20),
-                    height: 70,
-                    color: Colors.amber[300],
-                    child: Center(
-                      child: ListTile(
-                        title: Center(
-                          child: Text(
-                            "$key",
-                            style: TextStyle(color: Colors.black),
-                          ),
+                  margin: EdgeInsets.all(20),
+                  height: 70,
+                  color: Colors.amber[300],
+                  child: Center(
+                    child: ListTile(
+                      title: Center(
+                        child: Text(
+                          "$key",
+                          style: TextStyle(color: Colors.black),
                         ),
-                        onTap: () => {
-                          _individialCoursePage(
-                              branchCourses.values.elementAt(index))
-                        },
                       ),
-                    ));
+                      onTap: () => {
+                        _individialCoursePage(
+                            branchCourses.values.elementAt(index))
+                      },
+                    ),
+                  ),
+                );
               },
             ),
           )
@@ -52,10 +53,10 @@ class _CoursesWidgetState extends State<CoursesWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
+      //drawer: NavBar(),
       appBar: AppBar(
         title: Text(
-          "SGPA Calculator",
+          "SGPA Calculator for 3,1",
           style: TextStyle(color: Colors.cyan),
         ),
         centerTitle: true,
