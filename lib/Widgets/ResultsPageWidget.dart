@@ -127,16 +127,13 @@ class _ResultsPageState extends State<ResultsPage> {
             shrinkWrap: true,
             itemCount: _subjects.length,
             itemBuilder: (BuildContext context, int index) {
-              print(index);
-              String subjectCode =
-                  _subjects.elementAt(index).values.elementAt(0);
-              String subjectName =
-                  _subjects.elementAt(index).values.elementAt(1);
-              String gradeEarned =
-                  _subjects.elementAt(index).values.elementAt(2);
-              String subjectCredits =
-                  _subjects.elementAt(index).values.elementAt(3);
+              Map _currentSubject = _subjects[index];
 
+              String subjectCode = _currentSubject.values.elementAt(0);
+              String subjectName = _currentSubject.values.elementAt(1);
+              String gradeEarned = _currentSubject.values.elementAt(2);
+              String subjectCredits = _currentSubject.values.elementAt(3);
+              bool hasAdditionInfo = _currentSubject.length > 4;
               Color gradeColor;
               if (gradeEarned == "F") {
                 gradeColor = Colors.red;
@@ -147,13 +144,21 @@ class _ResultsPageState extends State<ResultsPage> {
                 children: [
                   ListTile(
                     title: Text("$subjectName"),
-                    subtitle: Text("Credits : $subjectCredits",
-                        style: TextStyle(
-                          color: Colors.green,
-                        )),
+                    subtitle: Text(
+                      "Credits : $subjectCredits",
+                      style: TextStyle(
+                        color: Colors.green,
+                      ),
+                    ),
                     leading: Text("$subjectCode"),
-                    trailing: Text("$gradeEarned",
-                        style: TextStyle(fontSize: 18, color: gradeColor)),
+                    trailing: Column(
+                      children: [
+                        Text(
+                          "$gradeEarned",
+                          style: TextStyle(fontSize: 18, color: gradeColor),
+                        ),
+                      ],
+                    ),
                   ),
                   Divider(thickness: 1.0),
                 ],
@@ -163,5 +168,26 @@ class _ResultsPageState extends State<ResultsPage> {
         ],
       ),
     );
+  }
+
+  Widget additionInfo(bool hasAdditionInfo, Map currentSubject) {
+    String internalMarks, externalMarks;
+    if (hasAdditionInfo) {
+      // Addition Information
+      internalMarks = currentSubject.values.elementAt(4);
+      externalMarks = currentSubject.values.elementAt(5);
+      return Column(
+        children: [
+          Text(
+            "IM: $internalMarks",
+          ),
+          Text(
+            "EM: $externalMarks",
+          )
+        ],
+      );
+    }
+    // Null Widget
+    return SizedBox.shrink();
   }
 }

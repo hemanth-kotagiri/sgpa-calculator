@@ -19,7 +19,34 @@ class NavBar extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             accountName: Text("© Hemanth Kotagiri"),
-            accountEmail: Text("hemanth.kotagiri43@gmail.com"),
+            accountEmail: Row(
+              children: [
+                TextButton(
+                  child: Image.asset("assets/images/Octocat.png"),
+                  onPressed: () {
+                    _launchURL("https://github.com/hemanth-kotagiri");
+                  },
+                ),
+                TextButton(
+                  child: Image.asset("assets/images/linkedin.png"),
+                  onPressed: () {
+                    _launchURL("https://www.linkedin.com/in/hemanth-kotagiri/");
+                  },
+                ),
+                TextButton(
+                  child: Image.asset("assets/images/instagram.png"),
+                  onPressed: () {
+                    _launchURL("https://www.instagram.com/hemanth_43/");
+                  },
+                ),
+                TextButton(
+                  child: Image.asset("assets/images/medium.png"),
+                  onPressed: () {
+                    _launchURL("https://medium.com/@hemanth-kotagiri43");
+                  },
+                ),
+              ],
+            ),
             currentAccountPicture: CircleAvatar(
               backgroundImage: NetworkImage(
                   "https://avatars.githubusercontent.com/u/24365579?v=4"),
