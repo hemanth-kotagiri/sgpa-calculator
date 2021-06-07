@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sgpa_calc/Widgets/NavBar.dart';
 import 'package:sgpa_calc/constants.dart';
 import 'BuildCourses.dart';
 

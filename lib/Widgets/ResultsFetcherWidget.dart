@@ -47,6 +47,12 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
               TextField(
                 controller: _hallticketController,
                 decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () {
+                      _hallticketController.text = "";
+                    },
+                  ),
                   labelText: "Hallticket",
                   hintText: "Enter Here",
                   border: OutlineInputBorder(),
@@ -67,6 +73,12 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
               TextField(
                 controller: _dobController,
                 decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear_sharp),
+                    onPressed: () {
+                      _dobController.text = "";
+                    },
+                  ),
                   labelText: "Year-Month-Day",
                   hintText: "Enter Here",
                   border: OutlineInputBorder(),
@@ -87,64 +99,72 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
               TextField(
                 controller: _yearController,
                 decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear_sharp),
+                    onPressed: () {
+                      _yearController.text = "";
+                    },
+                  ),
                   labelText: "Year,Sem",
                   hintText: "1,1",
                   border: OutlineInputBorder(),
                 ),
               ),
-              Divider(),
-              ElevatedButton(
-                  onPressed: _isPressed == false
-                      ? () async {
-                          if (_hallticketController.text == "" ||
-                              _yearController.text == "" ||
-                              _dobController.text == "") {
-                            return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    // backgroundColor: Colors.blueAccent,
-                                    title: Center(
-                                      child: Text(
-                                          "Please provide valid input only."),
-                                    ),
-                                  );
-                                });
-                          }
-                          ResultFetcher fetcher = ResultFetcher(
-                            hallticket: _hallticketController.text,
-                            dob: _dobController.text,
-                            year: _yearController.text,
-                          );
-                          setState(() {
-                            _isPressed = true;
-                          });
-                          List result;
-                          try {
-                            result = await fetcher.fetchResult();
-                          } catch (Exception) {
+              Padding(
+                padding: const EdgeInsets.all(100.0),
+                child: ElevatedButton(
+                    onPressed: _isPressed == false
+                        ? () async {
+                            if (_hallticketController.text == "" ||
+                                _yearController.text == "" ||
+                                _dobController.text == "") {
+                              return showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      // backgroundColor: Colors.blueAccent,
+                                      title: Center(
+                                        child: Text(
+                                            "Please provide valid input only."),
+                                      ),
+                                    );
+                                  });
+                            }
+                            ResultFetcher fetcher = ResultFetcher(
+                              hallticket: _hallticketController.text,
+                              dob: _dobController.text,
+                              year: _yearController.text,
+                            );
                             setState(() {
-                              _isPressed = false;
+                              _isPressed = true;
                             });
-                            return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    // backgroundColor: Colors.blueAccent,
-                                    title: Text(
-                                        "Please provide valid input only."),
-                                  );
-                                });
+                            List result;
+                            try {
+                              result = await fetcher.fetchResult();
+                            } catch (Exception) {
+                              setState(() {
+                                _isPressed = false;
+                              });
+                              return showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      // backgroundColor: Colors.blueAccent,
+                                      title: Text(
+                                          "Please provide valid input only."),
+                                    );
+                                  });
+                            }
+                            _resultsPage(result);
                           }
-                          _resultsPage(result);
-                        }
-                      : null,
-                  child: Text(
-                    "Get Result",
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ))
+                        : null,
+                    child: Text(
+                      "Get Result",
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    )),
+              )
             ],
           ),
         ),

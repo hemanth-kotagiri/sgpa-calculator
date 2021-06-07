@@ -36,7 +36,11 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Divider(),
+                Divider(
+                  thickness: 1.8,
+                  //indent: 50,
+                  //endIndent: 50,
+                ),
                 Container(
                   margin: EdgeInsets.all(35),
                   height: 70,
