@@ -22,25 +22,37 @@ class NavBar extends StatelessWidget {
             accountEmail: Row(
               children: [
                 TextButton(
-                  child: Image.asset("assets/images/Octocat.png"),
+                  child: Image.asset(
+                    "assets/images/Octocat.png",
+                  ),
                   onPressed: () {
                     _launchURL("https://github.com/hemanth-kotagiri");
                   },
                 ),
                 TextButton(
-                  child: Image.asset("assets/images/linkedin.png"),
+                  child: Image.asset(
+                    "assets/images/linkedin.png",
+                    width: 20,
+                  ),
                   onPressed: () {
                     _launchURL("https://www.linkedin.com/in/hemanth-kotagiri/");
                   },
                 ),
                 TextButton(
-                  child: Image.asset("assets/images/instagram.png"),
+                  child: Image.asset(
+                    "assets/images/instagram.png",
+                    width: 20,
+                  ),
                   onPressed: () {
                     _launchURL("https://www.instagram.com/hemanth_43/");
                   },
                 ),
                 TextButton(
-                  child: Image.asset("assets/images/medium.png"),
+                  child: Image.asset(
+                    "assets/images/medium.png",
+                    width: 20,
+                    color: Colors.white54,
+                  ),
                   onPressed: () {
                     _launchURL("https://medium.com/@hemanth-kotagiri43");
                   },
