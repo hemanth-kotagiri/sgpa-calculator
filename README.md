@@ -11,18 +11,24 @@
 
 ### A cross-platform application built using Flutter to calculate stream-specific GPA.
 
-As of now, this application is specifically targetted to Junior Year students of JNTUH of those who are in R18 Regulation.
+As of now, this application is specifically targetted to Junior Year students of JNTUH of those who are enrolled in the R18 Regulation.
 
 I have also developed a [RESTful API](https://github.com/hemanth-kotagiri/sgpa-rest-api) for this application
-with which, results of all semesters of Freshman, Sophomore, Junior and Senior can be fetched.
+with which, results of all regular semesters of Freshman, Sophomore, Junior and Senior can be fetched.
 
 ### Upcoming Features
 
 More features to this application are on their way, some of them are :
 
 - Database integration - Ability to store the results that have already been fetched/calculated.
+- Supplementary results.
 
-Feel free to contribute to this project! PRs are welcome!
+### Alpha Testers & UI/UX
+
+- [Navaneeth Kumar](mailto:kumarnavaneeth8@gmail.com)
+- [Akash Reddy](https://github.com/Akashreddy9876)
+
+Feel free to contribute to this project in whatever way you wish to! PRs are also welcome!
 
 [MIT License](LICENSE) - Copyright (c) 2021 Hemanth Kotagiri
 
