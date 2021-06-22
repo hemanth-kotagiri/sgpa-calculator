@@ -113,7 +113,7 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(100.0),
+                padding: const EdgeInsets.all(50),
                 child: ElevatedButton(
                     onPressed: _isPressed == false
                         ? () async {
@@ -148,14 +148,16 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                                 _isPressed = false;
                               });
                               return showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      // backgroundColor: Colors.blueAccent,
-                                      title: Text(
-                                          "Please provide valid input only."),
-                                    );
-                                  });
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    // backgroundColor: Colors.blueAccent,
+                                    title: Text(
+                                      "Please provide valid input only.",
+                                    ),
+                                  );
+                                },
+                              );
                             }
                             _resultsPage(result);
                           }
