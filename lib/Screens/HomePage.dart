@@ -1,84 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/Widgets/courses.dart';
 import 'package:sgpa_calc/Widgets/ResultsFetcherWidget.dart';
-import 'package:sgpa_calc/Widgets/NavBar.dart';
 
-class HomePage extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _TestHomeState createState() => _TestHomeState();
+}
+
+class _TestHomeState extends State<Home> {
+  int _selectedIndex = 0;
+  static List<Widget> _pages = [CoursesWidget(), ResultsFetcherWidget()];
+
+  void _changeScreen(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "SGPA Calculator",
-            style: TextStyle(color: Colors.cyan),
+      body: _pages.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calculate),
+            label: '3,1 Calculator',
+            tooltip: "Calculator for 3,1 subjects",
+            backgroundColor: Colors.black,
           ),
-          centerTitle: true,
-        ),
-        drawer: NavBar(),
-        body: Center(
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  margin: EdgeInsets.all(35),
-                  height: 70,
-                  color: Colors.amber[300],
-                  child: Center(
-                    child: ListTile(
-                      title: Center(
-                        child: Text(
-                          "Previous Year Results Fetcher",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                      onTap: () => {_changePageToFetcher(context)},
-                    ),
-                  ),
-                ),
-                Divider(
-                  thickness: 1.8,
-                  //indent: 50,
-                  //endIndent: 50,
-                ),
-                Container(
-                  margin: EdgeInsets.all(35),
-                  height: 70,
-                  color: Colors.amber[300],
-                  child: Center(
-                    child: ListTile(
-                      title: Center(
-                        child: Text(
-                          "3,1 Calculator",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                      onTap: () => {_changePageToCalculator(context)},
-                    ),
-                  ),
-                )
-              ],
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.timeline),
+            label: 'Results Fetcher',
+            tooltip: "Fetch Results of previous semesters",
+            backgroundColor: Colors.black,
           ),
-        ));
-  }
-
-  _changePageToFetcher(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) {
-          return ResultsFetcherWidget();
-        },
-      ),
-    );
-  }
-
-  _changePageToCalculator(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) {
-          return CoursesWidget();
-        },
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.cyanAccent,
+        unselectedItemColor: Colors.grey[600],
+        onTap: _changeScreen,
+        type: BottomNavigationBarType.shifting,
       ),
     );
   }
