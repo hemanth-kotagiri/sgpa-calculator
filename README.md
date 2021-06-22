@@ -1,10 +1,9 @@
 ## SGPA-Calculator Flutter Application
 
 <p align="center">
-  <img src="images/img4.png" alt="Image 4" width="250">
+  <img src="images/img1.png" alt="Image 1" width="260">
   <img src="images/img5.png" alt="Image 5" width="250">
   <img src="images/img6.png" alt="Image 6" width="250">
-  <img src="images/img1.png" alt="Image 1" width="260">
   <img src="images/img2.png" alt="Image 2" width="260">
   <img src="images/img3.png" alt="Image 3" width="250">
 </p>
