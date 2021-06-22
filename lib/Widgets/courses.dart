@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/constants.dart';
 import 'BuildCourses.dart';
+import 'package:sgpa_calc/Widgets/NavBar.dart';
 
 class CoursesWidget extends StatefulWidget {
   CoursesWidget({Key key}) : super(key: key);
@@ -52,7 +53,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //drawer: NavBar(),
+      drawer: NavBar(),
       appBar: AppBar(
         title: Text(
           "SGPA Calculator for 3,1",

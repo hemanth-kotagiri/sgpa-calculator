@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/Widgets/ResultsPageWidget.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
+import 'package:sgpa_calc/Widgets/NavBar.dart';
 
 class ResultsFetcherWidget extends StatefulWidget {
   @override
@@ -28,6 +29,7 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
             )),
         centerTitle: true,
       ),
+      drawer: NavBar(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Screens/HomePage.dart';
+import 'Screens/TestHomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
         primaryColorLight: Color(0xff03203C),
         primaryColorDark: Color(0xff242B2E),
       ),
-      home: HomePage(),
+      home: TestHome(),
       debugShowCheckedModeBanner: false,
     );
   }
