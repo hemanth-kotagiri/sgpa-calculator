@@ -38,7 +38,8 @@ class _ResultsPageState extends State<ResultsPage> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("${widget._result.elementAt(0).values.elementAt(0)}",
+            child: SelectableText(
+                "${widget._result.elementAt(0).values.elementAt(0)}",
                 style: TextStyle(
                   color: gradeColor,
                   fontWeight: FontWeight.bold,
@@ -57,7 +58,7 @@ class _ResultsPageState extends State<ResultsPage> {
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
                 )),
-            subtitle: Text(
+            subtitle: SelectableText(
               "${widget._result.elementAt(1).values.elementAt(0)}",
               style: TextStyle(
                 fontSize: 18,
@@ -77,7 +78,8 @@ class _ResultsPageState extends State<ResultsPage> {
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
                 )),
-            subtitle: Text("${widget._result.elementAt(1).values.elementAt(3)}",
+            subtitle: SelectableText(
+                "${widget._result.elementAt(1).values.elementAt(3)}",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -95,7 +97,8 @@ class _ResultsPageState extends State<ResultsPage> {
                   fontWeight: FontWeight.w300,
                   fontSize: 14,
                 )),
-            subtitle: Text("${widget._result.elementAt(1).values.elementAt(1)}",
+            subtitle: SelectableText(
+                "${widget._result.elementAt(1).values.elementAt(1)}",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -113,7 +116,8 @@ class _ResultsPageState extends State<ResultsPage> {
                   fontSize: 13,
                   fontWeight: FontWeight.w300,
                 )),
-            subtitle: Text("${widget._result.elementAt(1).values.elementAt(2)}",
+            subtitle: SelectableText(
+                "${widget._result.elementAt(1).values.elementAt(2)}",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -143,17 +147,17 @@ class _ResultsPageState extends State<ResultsPage> {
               return Column(
                 children: [
                   ListTile(
-                    title: Text("$subjectName"),
-                    subtitle: Text(
+                    title: SelectableText("$subjectName"),
+                    subtitle: SelectableText(
                       "Credits : $subjectCredits",
                       style: TextStyle(
                         color: Colors.green,
                       ),
                     ),
-                    leading: Text("$subjectCode"),
+                    leading: SelectableText("$subjectCode"),
                     trailing: Column(
                       children: [
-                        Text(
+                        SelectableText(
                           "$gradeEarned",
                           style: TextStyle(fontSize: 18, color: gradeColor),
                         ),
