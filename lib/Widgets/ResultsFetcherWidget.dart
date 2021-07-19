@@ -143,6 +143,18 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                             List result;
                             try {
                               result = await fetcher.fetchResult();
+                            } on FormatException {
+                              setState(() {
+                                _isPressed = false;
+                              });
+                              return showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          "Sorry, Something wrong with Server! Will be fixed shortly!"),
+                                    );
+                                  });
                             } catch (Exception) {
                               setState(() {
                                 _isPressed = false;
