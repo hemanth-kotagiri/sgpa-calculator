@@ -23,7 +23,7 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Text("Fetch Results",
+        title: Text("Fetch Regular Results",
             style: TextStyle(
               color: Colors.cyan,
             )),
@@ -152,7 +152,7 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
                                   builder: (context) {
                                     return AlertDialog(
                                       title: Text(
-                                          "Sorry, Something wrong with Server! Will be fixed shortly!"),
+                                          "Sorry, Something went wrong with server! Please try again!"),
                                     );
                                   });
                             } catch (Exception) {
