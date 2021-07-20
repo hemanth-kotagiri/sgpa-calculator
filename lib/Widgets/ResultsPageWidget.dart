@@ -142,27 +142,32 @@ class _ResultsPageState extends State<ResultsPage> {
               if (gradeEarned == "F") {
                 gradeColor = Colors.red;
               } else {
-                gradeColor = Colors.blue[100];
+                gradeColor = Colors.green;
               }
               return Column(
                 children: [
-                  ListTile(
-                    title: SelectableText("$subjectName"),
-                    subtitle: SelectableText(
-                      "Credits : $subjectCredits",
-                      style: TextStyle(
-                        color: Colors.green,
-                      ),
-                    ),
-                    leading: SelectableText("$subjectCode"),
-                    trailing: Column(
-                      children: [
-                        SelectableText(
-                          "$gradeEarned",
-                          style: TextStyle(fontSize: 18, color: gradeColor),
+                  Column(
+                    children: [
+                      ListTile(
+                        title: SelectableText("$subjectName"),
+                        subtitle: SelectableText(
+                          "Credits : $subjectCredits",
+                          style: TextStyle(
+                            color: Colors.green,
+                          ),
                         ),
-                      ],
-                    ),
+                        leading: SelectableText("$subjectCode"),
+                        trailing: Column(
+                          children: [
+                            SelectableText(
+                              "$gradeEarned",
+                              style: TextStyle(fontSize: 18, color: gradeColor),
+                            ),
+                            additionInfo(hasAdditionInfo, _currentSubject)
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   Divider(thickness: 1.0),
                 ],
@@ -181,13 +186,14 @@ class _ResultsPageState extends State<ResultsPage> {
       internalMarks = currentSubject.values.elementAt(4);
       externalMarks = currentSubject.values.elementAt(5);
       return Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            "IM: $internalMarks",
+          SelectableText(
+            "I : $internalMarks",
           ),
-          Text(
-            "EM: $externalMarks",
-          )
+          SelectableText(
+            "E : $externalMarks",
+          ),
         ],
       );
     }
