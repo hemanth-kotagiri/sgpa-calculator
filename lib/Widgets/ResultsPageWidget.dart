@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatefulWidget {
@@ -19,11 +20,11 @@ class _ResultsPageState extends State<ResultsPage> {
     List _subjects = widget._result.elementAt(2);
 
     // Colors
-    Color gradeColor;
+    Color sgpaColor;
     if (widget._result.elementAt(0).values.elementAt(0) == "FAIL") {
-      gradeColor = Colors.red;
+      sgpaColor = Colors.red;
     } else {
-      gradeColor = Colors.green;
+      sgpaColor = Colors.green;
     }
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -33,7 +34,10 @@ class _ResultsPageState extends State<ResultsPage> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               "SGPA",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Padding(
@@ -41,7 +45,7 @@ class _ResultsPageState extends State<ResultsPage> {
             child: SelectableText(
                 "${widget._result.elementAt(0).values.elementAt(0)}",
                 style: TextStyle(
-                  color: gradeColor,
+                  color: sgpaColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 )),
@@ -138,36 +142,45 @@ class _ResultsPageState extends State<ResultsPage> {
               String gradeEarned = _currentSubject.values.elementAt(2);
               String subjectCredits = _currentSubject.values.elementAt(3);
               bool hasAdditionInfo = _currentSubject.length > 4;
+              Color subjectColor;
               Color gradeColor;
               if (gradeEarned == "F") {
                 gradeColor = Colors.red;
+                subjectColor = Colors.red[300];
               } else {
                 gradeColor = Colors.green;
+                subjectColor = Colors.blue[100];
               }
               return Column(
                 children: [
-                  Column(
-                    children: [
-                      ListTile(
-                        title: SelectableText("$subjectName"),
-                        subtitle: SelectableText(
-                          "Credits : $subjectCredits",
-                          style: TextStyle(
-                            color: Colors.green,
-                          ),
-                        ),
-                        leading: SelectableText("$subjectCode"),
-                        trailing: Column(
-                          children: [
-                            SelectableText(
-                              "$gradeEarned",
-                              style: TextStyle(fontSize: 18, color: gradeColor),
-                            ),
-                            additionInfo(hasAdditionInfo, _currentSubject)
-                          ],
-                        ),
+                  ListTile(
+                    title: SelectableText(
+                      "$subjectName",
+                      style: TextStyle(
+                        color: subjectColor,
                       ),
-                    ],
+                    ),
+                    subtitle: SelectableText(
+                      "Credits : $subjectCredits",
+                      style: TextStyle(
+                        color: Colors.green,
+                      ),
+                    ),
+                    leading: Column(
+                      children: [
+                        SelectableText("$subjectCode",
+                            style: TextStyle(color: Colors.amber[200])),
+                      ],
+                    ),
+                    trailing: Column(
+                      children: [
+                        SelectableText(
+                          "$gradeEarned",
+                          style: TextStyle(fontSize: 18, color: gradeColor),
+                        ),
+                        additionInfo(hasAdditionInfo, _currentSubject)
+                      ],
+                    ),
                   ),
                   Divider(thickness: 1.0),
                 ],
@@ -186,7 +199,6 @@ class _ResultsPageState extends State<ResultsPage> {
       internalMarks = currentSubject.values.elementAt(4);
       externalMarks = currentSubject.values.elementAt(5);
       return Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SelectableText(
             "I : $internalMarks",
