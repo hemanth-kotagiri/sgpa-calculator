@@ -31,8 +31,9 @@ Feel free to contribute to this project in whatever way you wish to! PRs are als
 
 [MIT License](LICENSE) - Copyright (c) 2021 Hemanth Kotagiri
 
-This Project has been solely developed by me without any external influence
-whatsoever, and if in the case of any upcoming contributions by others, they
-are also equally regarded as developers of this project.
+This project has been solely developed by me without any external influence by
+a person or an organization or university whatsoever, and if in the case of any
+upcoming contributions, they are also equally regarded as developers of this
+project.
 
 Made with ❤️ by Hemanth.
