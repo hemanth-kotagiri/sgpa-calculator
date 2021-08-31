@@ -36,4 +36,12 @@ a person or an organization or university whatsoever, and if in the case of any
 upcoming contributions, they are also equally regarded as developers of this
 project.
 
+Contributions are always welcome! Feel free to pick up tasks from the project
+section and raise a PR. Please raise an issue regarding the task that you
+would like to pick up and link the PR(s) for the same.
+
 Made with ❤️ by Hemanth.
+
+---
+
+> For Precious, with Patience.
