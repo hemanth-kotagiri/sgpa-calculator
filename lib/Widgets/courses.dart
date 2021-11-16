@@ -56,7 +56,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
       drawer: NavBar(),
       appBar: AppBar(
         title: Text(
-          "SGPA Calculator for 3,1",
+          "SGPA Calculator for 3,2",
           style: TextStyle(color: Colors.cyan),
         ),
         centerTitle: true,
@@ -73,7 +73,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
       return Scaffold(
         appBar: AppBar(
           title: Text(
-            "SGPA Calculator for 3,1",
+            "SGPA Calculator for 3,2",
             style: TextStyle(color: Colors.cyan),
           ),
           centerTitle: true,

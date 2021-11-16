@@ -25,8 +25,8 @@ class _TestHomeState extends State<Home> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
-            label: '3,1 Calculator',
-            tooltip: "Calculator for 3,1 subjects",
+            label: '3,2 Calculator',
+            tooltip: "Calculator for 3,2 subjects",
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
