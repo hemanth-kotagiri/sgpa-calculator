@@ -11,26 +11,25 @@ final gradeScores = {
 };
 
 final branchCourses = {
-  "Electronics and Communication Engineering": {
-    "Microprocessors & Microcontrollers": 4,
-    "Data Communications and Networks": 4,
-    "Control Systems": 4,
-    "Business Economics & Financial Analysis": 3,
+ "Electronics and Communication Engineering": {
+    "Antennas and Propagation": 4,
+    "Digital Signal Processing": 4,
+    "VLSI Design": 4,
     "Professional Elective": 3,
-    "Microprocessors & Microcontrollers lab": 1.5,
-    "Data Communications and Networks lab": 1.5,
-    "Advanced Communication Skills Lab": 1
+    "Open Elective": 3,
+    "Digital Signal Processing Lab": 1.5,
+    "e-CAD Lab": 1.5,
+    "Scripting Languages Lab": 1
   },
   "Computer Science and Engineering": {
-    "Formal Languages and Automata Theory": 3,
-    "Software Engineering": 3,
-    "Computer Networks": 3,
-    "Web Technologies": 3,
-    "Professional Elective 1": 3,
-    "Professional Elective 2": 3,
-    "Software Engineering Lab": 1.5,
-    "Computer Networks and Web Technologies Lab": 1.5,
-    "Advanced Communication Skills Lab": 1
+    "Machine Learning": 4,
+    "Compiler Design": 4,
+    "Design and Analysis of Algorithms": 4,
+    "Professional Elective": 3,
+    "Open Elective": 3,
+    "Machine Learning Lab": 1.5,
+    "Compiler Design Lab": 1.5,
+    "Professional Elective Lab": 1
   },
   "Information Technology": {
     "Formal Languages and Automata Theory": 3,
