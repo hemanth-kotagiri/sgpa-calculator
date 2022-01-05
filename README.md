@@ -1,5 +1,7 @@
 ## SGPA-Calculator Flutter Application
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/34358ffb3522403392db40aff83b6255)](https://app.codacy.com/gh/hemanth-kotagiri/sgpa-calculator?utm_source=github.com&utm_medium=referral&utm_content=hemanth-kotagiri/sgpa-calculator&utm_campaign=Badge_Grade_Settings)
+
 <p align="center">
   <img src="images/img1.png" alt="Image 1" width="250">
   <img src="images/img5.png" alt="Image 5" width="250">
