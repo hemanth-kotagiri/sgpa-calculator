@@ -21,8 +21,14 @@ with which, results of all regular semesters of Freshman, Sophomore, Junior and 
 
 More features to this application are on their way, some of them are :
 
-- Database integration - Ability to store the results that have already been fetched/calculated.
-- Supplementary results.
+- [ ] Results of all exams
+  - [ ] Support for all regulations.
+  - [ ] Regular Results.
+  - [ ] Supplementary Results.
+  - [ ] Advance Supplementary Results.
+  - [ ] RC/RV Results.
+- [ ] A special results page specifically for R18 Regular Exam Results.
+- [ ] Database integration - Ability to store the results that have already been fetched/calculated.
 
 ### Alpha Testers & UI/UX
 
@@ -31,7 +37,7 @@ More features to this application are on their way, some of them are :
 
 Feel free to contribute to this project in whatever way you wish to! PRs are also welcome!
 
-[MIT License](LICENSE) - Copyright (c) 2021 Hemanth Kotagiri
+[MIT License](LICENSE) - Copyright (c) 2022 Hemanth Kotagiri
 
 This project has been solely developed by me without any external influence by
 a person or an organization or university whatsoever, and if in the case of any
@@ -43,7 +49,5 @@ section and raise a PR. Please raise an issue regarding the task that you
 would like to pick up and link the PR(s) for the same.
 
 Made with ❤️ by Hemanth.
-
----
 
 > For Precious, with Patience.
