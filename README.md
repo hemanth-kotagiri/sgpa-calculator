@@ -10,9 +10,11 @@
   <img src="images/img3.png" alt="Image 3" width="250">
 </p>
 
-### A cross-platform application built using Flutter to calculate stream-specific GPA.
+A cross-platform application built using Flutter to calculate stream-specific
+GPA. As of now, this application is specifically targetted to Junior Year
+students of JNTUH of those who are enrolled in the R18 Regulation.
 
-As of now, this application is specifically targetted to Junior Year students of JNTUH of those who are enrolled in the R18 Regulation.
+### Backend
 
 I have also developed a [RESTful API](https://github.com/hemanth-kotagiri/sgpa-rest-api) for this application
 with which, results of all regular semesters of Freshman, Sophomore, Junior and Senior can be fetched.
