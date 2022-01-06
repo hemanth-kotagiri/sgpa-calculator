@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sgpa_calc/Widgets/courses.dart';
+import 'package:sgpa_calc/Widgets/RegularResultsDisplayWidget.dart';
+import 'package:sgpa_calc/Widgets/SupplyResultsDisplayWidget.dart';
 import 'package:sgpa_calc/Widgets/ResultsFetcherWidget.dart';
 
 class Home extends StatefulWidget {
@@ -9,7 +10,11 @@ class Home extends StatefulWidget {
 
 class _TestHomeState extends State<Home> {
   int _selectedIndex = 0;
-  static List<Widget> _pages = [CoursesWidget(), ResultsFetcherWidget()];
+  static List<Widget> _pages = [
+    SupplyResultsDisplayWidget(),
+    RegularResultsDisplayWidget(),
+    ResultsFetcherWidget()
+  ];
 
   void _changeScreen(int index) {
     setState(() {
@@ -24,15 +29,21 @@ class _TestHomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.calculate),
-            label: '3,2 Calculator',
-            tooltip: "Calculator for 3,2 subjects",
+            icon: Icon(Icons.bolt),
+            label: 'All Supply Results',
+            tooltip: "Results Links for All Supplementary Exams",
+            backgroundColor: Colors.black,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bolt),
+            label: 'All Regular Results',
+            tooltip: "Results Links for All Regular Exams",
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.timeline),
-            label: 'Results Fetcher',
-            tooltip: "Fetch Results of previous semesters",
+            label: 'R18 Regular Results Fetcher',
+            tooltip: "Fetch Regular Results of R18 Batch Students",
             backgroundColor: Colors.black,
           ),
         ],

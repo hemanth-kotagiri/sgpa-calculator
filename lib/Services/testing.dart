@@ -3,7 +3,14 @@ import 'FetchResult.dart';
 void main(List<String> args) async {
   ResultFetcher fetcher =
       ResultFetcher(hallticket: "185u1a0565", dob: "2001-04-03", year: "1,1");
-
-  List result = await fetcher.fetchResult();
-  print(result);
+  // ?hallticket=18N81A05L2&dob=3&degree=btech&examCode=1381&etype=r17
+  print(fetcher.fetchSupplyResult(
+    hallticket: "185u1a0588",
+    dob: "3",
+    degree: "btech",
+    examCode: "1381",
+    eType: "r17",
+    result: "",
+    type: "",
+  ));
 }
