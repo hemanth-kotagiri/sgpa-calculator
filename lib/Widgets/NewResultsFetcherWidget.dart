@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
 
 import 'NewResultsPage.dart';
+import 'ResultsPageWidget.dart';
 
 class NewResultsFetcherWidget extends StatefulWidget {
   const NewResultsFetcherWidget({
@@ -36,10 +37,16 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Center(
-                  child: Text(
-                    widget._result.values.elementAt(0),
-                    style: TextStyle(
-                      fontSize: 17,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      widget._result.values.elementAt(0), // Exam name
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.green[200],
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -98,8 +105,6 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
                             });
                             List result;
                             try {
-                              print("IN TYJK");
-                              print(widget._result);
                               String degree = widget._result["degree"];
                               String examCode = widget._result["examCode"];
                               String eType = widget._result["etype"];
@@ -109,15 +114,28 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
                                       ? ''
                                       : widget._result["result"];
 
-                              result = await fetcher.fetchSupplyResult(
-                                hallticket: _hallticketController.text,
-                                dob: "3",
-                                degree: degree,
-                                examCode: examCode,
-                                eType: eType,
-                                result: paramResult,
-                                type: type,
-                              );
+                              if (widget._result["exam_name"]
+                                  .contains("Supplementary")) {
+                                result = await fetcher.fetchSupplyResult(
+                                  hallticket: _hallticketController.text,
+                                  dob: "3",
+                                  degree: degree,
+                                  examCode: examCode,
+                                  eType: eType,
+                                  result: paramResult,
+                                  type: type,
+                                );
+                              } else {
+                                result = await fetcher.fetchRegularResults(
+                                  hallticket: _hallticketController.text,
+                                  dob: "3",
+                                  degree: degree,
+                                  examCode: examCode,
+                                  eType: eType,
+                                  result: paramResult,
+                                  type: type,
+                                );
+                              }
                             } on FormatException {
                               setState(() {
                                 _isPressed = false;
@@ -147,6 +165,7 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
                                 },
                               );
                             }
+                            print(result);
                             _resultsPage(result);
                           }
                         : null,
@@ -178,9 +197,11 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
           ),
           centerTitle: true,
         ),
-        body: NewResultsPage(
-          result: result,
-        ),
+        body: widget._result["exam_name"].contains("Supplementary")
+            ? NewResultsPage(result: result)
+            : ResultsPage(
+                result: result,
+              ),
       );
     }));
   }

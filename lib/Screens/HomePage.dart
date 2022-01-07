@@ -10,32 +10,44 @@ class Home extends StatefulWidget {
 
 class _TestHomeState extends State<Home> {
   int _selectedIndex = 0;
-  static List<Widget> _pages = [
-    SupplyResultsDisplayWidget(),
-    RegularResultsDisplayWidget(),
-    ResultsFetcherWidget()
-  ];
-
-  void _changeScreen(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    PageController _pageController = PageController();
+    List<Widget> _pages = [
+      SupplyResultsDisplayWidget(),
+      RegularResultsDisplayWidget(),
+      ResultsFetcherWidget()
+    ];
+
+    void _onPageChanged(int index) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+
+    void _bottomItemTapped(int selectedIdx) {
+      _pageController.jumpToPage(selectedIdx);
+    }
+
     return Scaffold(
-      body: _pages.elementAt(_selectedIndex),
+      //body: _pages.elementAt(_selectedIndex),
+      body: PageView(
+          controller: _pageController,
+          children: _pages,
+          onPageChanged: _onPageChanged,
+          physics: NeverScrollableScrollPhysics()),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: _bottomItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.bolt),
+            icon: Icon(Icons.library_books),
             label: 'All Supply Results',
             tooltip: "Results Links for All Supplementary Exams",
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bolt),
+            icon: Icon(Icons.book),
             label: 'All Regular Results',
             tooltip: "Results Links for All Regular Exams",
             backgroundColor: Colors.black,
@@ -50,7 +62,6 @@ class _TestHomeState extends State<Home> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.cyanAccent,
         unselectedItemColor: Colors.grey[600],
-        onTap: _changeScreen,
         type: BottomNavigationBarType.shifting,
       ),
     );

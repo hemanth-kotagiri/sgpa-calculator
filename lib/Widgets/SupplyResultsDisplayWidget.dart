@@ -11,13 +11,20 @@ class SupplyResultsDisplayWidget extends StatefulWidget {
   _SupplyResultsDisplayWidget createState() => _SupplyResultsDisplayWidget();
 }
 
-class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget> {
+class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       drawer: NavBar(),
       appBar: AppBar(
-        title: Text("Supplimentary Exams"),
+        title: Text(
+          "Supplimentary Exams",
+          style: TextStyle(
+            color: Colors.cyan,
+          ),
+        ),
         centerTitle: true,
       ),
       body: FutureBuilder(
@@ -31,31 +38,55 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget> {
                 ),
               );
             } else {
-              print(snapshot.data.length);
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  final data = snapshot.data[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Center(
-                          child: Text(
-                            data.values.elementAt(1), // Date
-                          ),
-                        ),
-                        ListTile(
-                          title: Text(
-                            data.values.elementAt(0), // Exam Name
-                          ),
-                          onTap: () => {_individualResultPage(data)},
-                        ),
-                        Divider(thickness: 2),
-                      ],
+              return Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        final data = snapshot.data[index];
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () => {_individualResultPage(data)},
+                                child: Card(
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            data.values.elementAt(1), // Date
+                                            style: TextStyle(
+                                              color: Colors.green,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      ListTile(
+                                        title: Text(
+                                            data.values
+                                                .elementAt(0), // Exam Name
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.blue[200],
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Divider(thickness: 1, endIndent: 50, indent: 50),
+                          ],
+                        );
+                      },
                     ),
-                  );
-                },
+                  ),
+                ],
               );
             }
           }),
@@ -80,4 +111,7 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

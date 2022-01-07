@@ -57,4 +57,30 @@ class ResultFetcher {
     resultResponseList = jsonDecode(response.body);
     return resultResponseList;
   }
+
+  Future<List<dynamic>> fetchRegularResults(
+      {String hallticket,
+      String dob,
+      String degree,
+      String examCode,
+      String eType,
+      String result,
+      String type}) async {
+    List resultResponseList;
+    var url =
+        'https://results-restapi.herokuapp.com/api/calculate?hallticket=$hallticket&dob=$dob&degree=$degree&examCode=$examCode';
+    if (result != "") {
+      url += '&result=$result';
+    }
+    if (eType != '') {
+      url += '&etype=$eType';
+    }
+    if (type != '') {
+      url += '&type=$type';
+    }
+    var newUrl = Uri.parse(url);
+    Response response = await get(newUrl);
+    resultResponseList = jsonDecode(response.body);
+    return resultResponseList;
+  }
 }
