@@ -20,7 +20,7 @@ class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
       drawer: NavBar(),
       appBar: AppBar(
         title: Text(
-          "Regular Results",
+          "Regular Exams",
           style: TextStyle(
             color: Colors.cyan,
           ),
@@ -100,7 +100,7 @@ class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                "Regular Exams",
+                "Regular Results",
                 style: TextStyle(color: Colors.cyan),
               ),
               centerTitle: true,

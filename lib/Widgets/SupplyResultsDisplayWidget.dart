@@ -20,7 +20,7 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
       drawer: NavBar(),
       appBar: AppBar(
         title: Text(
-          "Supplimentary Exams",
+          "Supplementary Exams",
           style: TextStyle(
             color: Colors.cyan,
           ),
@@ -100,7 +100,7 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                "Supplimentary Results",
+                "Supplementary Results",
                 style: TextStyle(color: Colors.cyan),
               ),
               centerTitle: true,
