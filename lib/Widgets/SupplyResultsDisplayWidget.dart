@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'NavBar.dart';
 import 'NewResultsFetcherWidget.dart';
@@ -32,9 +33,30 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
-                child: const CircularProgressIndicator(
-                  strokeWidth: 2,
-                  backgroundColor: Colors.black,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //const CircularProgressIndicator(
+                    //strokeWidth: 2,
+                    //backgroundColor: Colors.black,
+                    //),
+                    SpinKitFadingCircle(
+                      itemBuilder: (BuildContext context, int index) {
+                        return DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: index.isEven ? Colors.cyan : Colors.green,
+                          ),
+                        );
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Text("Loading...",
+                          style: TextStyle(
+                            fontSize: 17,
+                          )),
+                    ),
+                  ],
                 ),
               );
             } else {
