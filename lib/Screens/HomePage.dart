@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sgpa_calc/Widgets/NotificationsDisplayWidget.dart';
 import 'package:sgpa_calc/Widgets/RegularResultsDisplayWidget.dart';
 import 'package:sgpa_calc/Widgets/SupplyResultsDisplayWidget.dart';
 import 'package:sgpa_calc/Widgets/ResultsFetcherWidget.dart';
@@ -15,6 +16,7 @@ class _TestHomeState extends State<Home> {
   Widget build(BuildContext context) {
     PageController _pageController = PageController();
     List<Widget> _pages = [
+      NotificationsDisplayWidget(),
       SupplyResultsDisplayWidget(),
       RegularResultsDisplayWidget(),
       ResultsFetcherWidget()
@@ -33,13 +35,20 @@ class _TestHomeState extends State<Home> {
     return Scaffold(
       //body: _pages.elementAt(_selectedIndex),
       body: PageView(
-          controller: _pageController,
-          children: _pages,
-          onPageChanged: _onPageChanged,
-          physics: NeverScrollableScrollPhysics()),
+        controller: _pageController,
+        children: _pages,
+        onPageChanged: _onPageChanged,
+        physics: NeverScrollableScrollPhysics(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _bottomItemTapped,
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Notifications',
+            tooltip: "Latest Notifications from JNTUH",
+            backgroundColor: Colors.black,
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.library_books),
             label: 'All Supply Results',

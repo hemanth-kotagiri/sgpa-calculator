@@ -83,4 +83,11 @@ class ResultFetcher {
     resultResponseList = jsonDecode(response.body);
     return resultResponseList;
   }
+
+  Future<List<dynamic>> fetchNotifications() async {
+    var url = Uri.parse('https://results-restapi.herokuapp.com/notifications');
+    Response response = await get(url);
+    List data = jsonDecode(response.body);
+    return data;
+  }
 }

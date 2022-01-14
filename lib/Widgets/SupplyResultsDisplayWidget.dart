@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'NavBar.dart';
 import 'NewResultsFetcherWidget.dart';
@@ -36,25 +36,25 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //const CircularProgressIndicator(
-                    //strokeWidth: 2,
-                    //backgroundColor: Colors.black,
-                    //),
-                    SpinKitFadingCircle(
-                      itemBuilder: (BuildContext context, int index) {
-                        return DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: index.isEven ? Colors.cyan : Colors.green,
-                          ),
-                        );
-                      },
+                    const CircularProgressIndicator(
+                      strokeWidth: 2,
+                      backgroundColor: Colors.black,
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Text("Loading...",
-                          style: TextStyle(
-                            fontSize: 17,
-                          )),
+                      padding: const EdgeInsets.all(22.0),
+                      child: DefaultTextStyle(
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white.withOpacity(0.3),
+                        ),
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            WavyAnimatedText(
+                                'Loading Supplementary Results...'),
+                          ],
+                          isRepeatingAnimation: true,
+                        ),
+                      ),
                     ),
                   ],
                 ),

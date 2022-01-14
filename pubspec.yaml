@@ -38,6 +38,7 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: "^0.8.0"
   http: ^0.13.3
+  animated_text_kit: ^4.2.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
