@@ -72,33 +72,7 @@ class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () => {_individualResultPage(data)},
-                                child: Card(
-                                  child: Column(
-                                    children: [
-                                      Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            data.values.elementAt(1), // Date
-                                            style: TextStyle(
-                                              color: Colors.green,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      ListTile(
-                                        title: Text(
-                                            data.values
-                                                .elementAt(0), // Exam Name
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: Colors.blue[200],
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                child: regularResultCard(data),
                               ),
                             ),
                             Divider(thickness: 1, endIndent: 50, indent: 50),
@@ -111,6 +85,42 @@ class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
               );
             }
           }),
+    );
+  }
+
+  Card regularResultCard(data) {
+    return Card(
+      child: Column(
+        children: [
+          getDate(data),
+          getRegularExamName(data),
+        ],
+      ),
+    );
+  }
+
+  ListTile getRegularExamName(data) {
+    return ListTile(
+      title: Text(data.values.elementAt(0), // Exam Name
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.blue[200],
+          )),
+    );
+  }
+
+  Center getDate(data) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          data.values.elementAt(1), // Date
+          style: TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
     );
   }
 
