@@ -65,49 +65,12 @@ class _NotificationsDisplayWidgetState extends State<NotificationsDisplayWidget>
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: GestureDetector(
-                                onTap: () => {
-                                  AlertDialog(
-                                    title: Text("GO BELOW"),
-                                  ),
-                                },
-                                child: Card(
-                                  child: Column(
-                                    children: [
-                                      Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            data.values.elementAt(0), // Date
-                                            style: TextStyle(
-                                              color: Colors.green[400],
-                                              fontWeight: FontWeight.w800,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      ListTile(
-                                        title: Text(
-                                          _getExamName(
-                                              data.values.elementAt(1)),
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.amber,
-                                          ),
-                                        ),
-                                      ),
-                                      ListTile(
-                                          title: Text(
-                                        data.values
-                                            .elementAt(1)
-                                            .split("PUBLISHED.")[1],
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                        ),
-                                      ))
-                                    ],
-                                  ),
+                              child: Card(
+                                child: Column(
+                                  children: [
+                                    getDate(data),
+                                    _getExamNameAndLastDate(data),
+                                  ],
                                 ),
                               ),
                             ),
@@ -124,14 +87,60 @@ class _NotificationsDisplayWidgetState extends State<NotificationsDisplayWidget>
     );
   }
 
-  String _getExamName(String data) {
-    var newData;
+  Center getDate(data) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          data.values.elementAt(0), // Date
+          style: TextStyle(
+            color: Colors.green[400],
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getExamNameAndLastDate(data) {
+    var examName;
+    var lastDate;
     try {
-      newData = data.split("PUBLISHED.")[0] + "PUBLISHED.";
+      examName = data.values.elementAt(1).split("PUBLISHED.")[0] + "PUBLISHED.";
+      lastDate = data.values.elementAt(1).split("PUBLISHED.")[1];
     } catch (Exception) {
-      newData = data;
+      examName = data.values.elementAt(1);
+      return ListTile(
+        title: Text(
+          examName,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.amber,
+          ),
+        ),
+      );
     }
-    return newData;
+    return Column(
+      children: [
+        ListTile(
+          title: Text(
+            examName,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.amber,
+            ),
+          ),
+        ),
+        ListTile(
+            title: Text(
+          lastDate,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.red,
+          ),
+        ))
+      ],
+    );
   }
 
   @override
