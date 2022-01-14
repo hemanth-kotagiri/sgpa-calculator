@@ -165,7 +165,6 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
                                 },
                               );
                             }
-                            print(result);
                             _resultsPage(result);
                           }
                         : null,
