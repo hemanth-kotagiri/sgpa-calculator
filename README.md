@@ -1,6 +1,19 @@
-## SGPA-Calculator Flutter Application
+## SGPA-Calculator
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/34358ffb3522403392db40aff83b6255)](https://app.codacy.com/gh/hemanth-kotagiri/sgpa-calculator?utm_source=github.com&utm_medium=referral&utm_content=hemanth-kotagiri/sgpa-calculator&utm_campaign=Badge_Grade_Settings)
+<img src="https://api.codacy.com/project/badge/Grade/34358ffb3522403392db40aff83b6255" alt="">
+
+<div align='left'>
+  <img src="https://img.shields.io/badge/flutter-blue.svg?style=for-the-badge&logo=flutter" alt="Flutter">
+  <img src="https://img.shields.io/badge/dart-blue.svg?style=for-the-badge&logo=dart" alt="Dart">
+  <img src="https://img.shields.io/badge/android-lightgreen.svg?style=for-the-badge&logo=android" alt="Android">
+  <img src="https://img.shields.io/badge/ios-grey.svg?style=for-the-badge&logo=apple" alt="iOS">
+  <img src="https://img.shields.io/badge/windows-blue.svg?style=for-the-badge&logo=windows" alt="Windows">
+  <img src="https://img.shields.io/badge/linux-black.svg?style=for-the-badge&logo=linux" alt="Linux">
+</div>
+
+A cross-platform application built using Flutter to calculate stream-specific
+GPA. As of now, this application is specifically targetted to Junior Year
+students of JNTUH of those who are enrolled in the R18 Regulation.
 
 <p align="center">
   <img src="images/img1.png" alt="Image 1" width="250">
@@ -9,10 +22,6 @@
   <img src="images/img2.png" alt="Image 2" width="250">
   <img src="images/img3.png" alt="Image 3" width="250">
 </p>
-
-A cross-platform application built using Flutter to calculate stream-specific
-GPA. As of now, this application is specifically targetted to Junior Year
-students of JNTUH of those who are enrolled in the R18 Regulation.
 
 ### Backend
 
@@ -23,13 +32,14 @@ with which, results of all regular semesters of Freshman, Sophomore, Junior and 
 
 More features to this application are on their way, some of them are :
 
-- [ ] Results of all exams
-  - [ ] Support for all regulations.
-  - [ ] Regular Results.
-  - [ ] Supplementary Results.
-  - [ ] Advance Supplementary Results.
-  - [ ] RC/RV Results.
-- [ ] A special results page specifically for R18 Regular Exam Results.
+- [x] Results of all exams
+  - [x] Support for all regulations.
+  - [x] Regular Results.
+  - [x] Supplementary Results.
+  - [x] Advance Supplementary Results.
+  - [x] RC/RV Results.
+- [x] A special results page specifically for R18 Regular Exam Results.
+- [ ] Latest Notifications from JNTUH
 - [ ] Database integration - Ability to store the results that have already been fetched/calculated.
 
 ### Alpha Testers & UI/UX
