@@ -39,7 +39,7 @@ More features to this application are on their way, some of them are :
   - [x] Advance Supplementary Results.
   - [x] RC/RV Results.
 - [x] A special results page specifically for R18 Regular Exam Results.
-- [ ] Latest Notifications from JNTUH
+- [x] Latest Notifications from JNTUH
 - [ ] Database integration - Ability to store the results that have already been fetched/calculated.
 
 ### Alpha Testers & UI/UX
@@ -62,4 +62,8 @@ would like to pick up and link the PR(s) for the same.
 
 Made with ❤️ by Hemanth.
 
-> For Precious, with Patience.
+> I started this for you, only for you. Now, it serves for a greater purpose -
+> for so many students ahead. You shall be remembered forever, in the
+> reminiscence of this project.
+
+> **_For Precious, with Patience._**
