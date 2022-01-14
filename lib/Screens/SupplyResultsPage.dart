@@ -1,8 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:sgpa_calc/Widgets/NavBar.dart';
-
 import 'package:sgpa_calc/Widgets/NewResultsFetcherWidget.dart';
 
 class SupplyResultsDisplayWidget extends StatefulWidget {
@@ -14,6 +13,9 @@ class SupplyResultsDisplayWidget extends StatefulWidget {
 
 class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
     with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -73,33 +75,7 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () => {_individualResultPage(data)},
-                                child: Card(
-                                  child: Column(
-                                    children: [
-                                      Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            data.values.elementAt(1), // Date
-                                            style: TextStyle(
-                                              color: Colors.green,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      ListTile(
-                                        title: Text(
-                                            data.values
-                                                .elementAt(0), // Exam Name
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: Colors.blue[200],
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                child: supplyResultCard(data),
                               ),
                             ),
                             Divider(thickness: 1, endIndent: 50, indent: 50),
@@ -112,6 +88,42 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
               );
             }
           }),
+    );
+  }
+
+  Center getDate(data) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          data.values.elementAt(1), // Date
+          style: TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+
+  ListTile getSupplyExamName(data) {
+    return ListTile(
+      title: Text(data.values.elementAt(0), // Exam Name
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.blue[200],
+          )),
+    );
+  }
+
+  Card supplyResultCard(data) {
+    return Card(
+      child: Column(
+        children: [
+          getDate(data),
+          getSupplyExamName(data),
+        ],
+      ),
     );
   }
 
@@ -133,7 +145,4 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
