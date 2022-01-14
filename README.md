@@ -22,6 +22,8 @@ students of JNTUH of those who are enrolled in the R18 Regulation.
   <img src="images/img5.png" alt="Image 5" width="250">
   <img src="images/img6.png" alt="Image 6" width="250">
   <img src="images/img3.png" alt="Image 3" width="250">
+</p>
+<p align="left">
   <h3>Individual Pages</h3>
   <img src="images/individual1.jpg" width="250">
   <img src="images/individual2.jpg" width="250">
