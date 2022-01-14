@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sgpa_calc/Widgets/NotificationsDisplayWidget.dart';
-import 'package:sgpa_calc/Widgets/RegularResultsDisplayWidget.dart';
-import 'package:sgpa_calc/Widgets/SupplyResultsDisplayWidget.dart';
-import 'package:sgpa_calc/Widgets/ResultsFetcherWidget.dart';
+import 'package:sgpa_calc/Screens/NotificationsPage.dart';
+import 'package:sgpa_calc/Screens/RegularResultsPage.dart';
+import 'package:sgpa_calc/Screens/SupplyResultsPage.dart';
+import 'package:sgpa_calc/Screens/ResultsFetcherOldPage.dart';
 
 class Home extends StatefulWidget {
   @override
