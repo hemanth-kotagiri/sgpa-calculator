@@ -16,11 +16,15 @@ GPA. As of now, this application is specifically targetted to Junior Year
 students of JNTUH of those who are enrolled in the R18 Regulation.
 
 <p align="center">
-  <img src="images/img1.png" alt="Image 1" width="250">
+  <img src="images/img1.png" alt="Image 1" width="240">
+  <img src="images/img2.png" alt="Image 2" width="250">
+  <img src="images/img4.png" alt="Image 4" width="250">
   <img src="images/img5.png" alt="Image 5" width="250">
   <img src="images/img6.png" alt="Image 6" width="250">
-  <img src="images/img2.png" alt="Image 2" width="250">
   <img src="images/img3.png" alt="Image 3" width="250">
+  <h3>Individual Pages</h3>
+  <img src="images/individual1.jpg" width="250">
+  <img src="images/individual2.jpg" width="250">
 </p>
 
 ### Backend

@@ -38,7 +38,10 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
                 animatedText: "Loading Supplementary Results...",
               );
             } else {
-              return AllResultsList(data: snapshot.data);
+              return AllResultsList(
+                data: snapshot.data,
+                titleText: "Supplementary Results",
+              );
             }
           }),
     );

@@ -23,7 +23,7 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Text("Fetch Regular Results",
+        title: Text("Fetch R18 Regular Results",
             style: TextStyle(
               color: Colors.cyan,
             )),

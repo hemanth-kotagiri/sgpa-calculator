@@ -38,7 +38,10 @@ class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
                 animatedText: "Loading Regular Results...",
               );
             } else {
-              return AllResultsList(data: snapshot.data);
+              return AllResultsList(
+                data: snapshot.data,
+                titleText: "Regular Results",
+              );
             }
           }),
     );

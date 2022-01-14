@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'NewResultsFetcherWidget.dart';
 
 class AllResultsList extends StatefulWidget {
-  final data;
-  const AllResultsList({Key key, @required this.data}) : super(key: key);
+  final data, titleText;
+  const AllResultsList({Key key, @required this.data, @required this.titleText})
+      : super(key: key);
 
   @override
   _AllResultsListState createState() => _AllResultsListState();
@@ -82,7 +83,7 @@ class _AllResultsListState extends State<AllResultsList> {
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                "Supplementary Results",
+                widget.titleText,
                 style: TextStyle(color: Colors.cyan),
               ),
               centerTitle: true,
