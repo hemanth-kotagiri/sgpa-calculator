@@ -1,5 +1,3 @@
-## SGPA-Calculator
-
 <img src="https://api.codacy.com/project/badge/Grade/34358ffb3522403392db40aff83b6255" alt="">
 
 <div align='left'>
@@ -11,9 +9,17 @@
   <img src="https://img.shields.io/badge/linux-black.svg?style=for-the-badge&logo=linux" alt="Linux">
 </div>
 
+<br>
+
+<div align="center">
+<img width=100 src="./images/grade.png" alt="">
+<h1>SGPA Calculator</h1>
 A cross-platform application built using Flutter to calculate stream-specific
 GPA. As of now, this application is specifically targetted to Junior Year
 students of JNTUH of those who are enrolled in the R18 Regulation.
+<br>
+<br>
+</div>
 
 <p align="center">
   <img src="images/img1.png" alt="Image 1" width="240">
@@ -48,7 +54,7 @@ More features to this application are on their way, some of them are :
   - [x] RC/RV Results.
 - [x] A special results page specifically for R18 Regular Exam Results.
 - [x] Latest Notifications from JNTUH
-- [ ] Database integration - Ability to store the results that have already been fetched/calculated.
+- [x] Database integration - Ability to store the results that have already been fetched/calculated.
 
 ### Alpha Testers & UI/UX
 
