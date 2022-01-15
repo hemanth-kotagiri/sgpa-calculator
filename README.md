@@ -15,8 +15,8 @@
 <img width=100 src="./images/grade.png" alt="">
 <h1>SGPA Calculator</h1>
 A cross-platform application built using Flutter to calculate stream-specific
-GPA. As of now, this application is specifically targetted to Junior Year
-students of JNTUH of those who are enrolled in the R18 Regulation.
+GPA. This application provides the results for all JNTUH students of all
+regulations, of all types ( regular and supplementary ).
 <br>
 <br>
 </div>
