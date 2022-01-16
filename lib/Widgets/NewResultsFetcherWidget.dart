@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
+import 'package:sgpa_calc/Services/SavePdfAPI.dart';
 
 import 'NewResultsPage.dart';
 import 'ResultsPageWidget.dart';
@@ -190,11 +191,33 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(
-            "RESULT",
-            style: TextStyle(color: Colors.cyan),
+          title: Row(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Spacer(),
+              Text(
+                "RESULT",
+                style: TextStyle(color: Colors.cyan),
+              ),
+              Spacer(),
+              IconButton(
+                icon: Icon(
+                  Icons.save,
+                  size: 32.0,
+                ),
+                onPressed: () {
+                  _savePdf(
+                    result: result,
+                    examName: widget._result["exam_name"],
+                    supply:
+                        widget._result["exam_name"].contains("Supplementary"),
+                  );
+                },
+              )
+            ],
           ),
-          centerTitle: true,
         ),
         body: widget._result["exam_name"].contains("Supplementary")
             ? NewResultsPage(result: result)
@@ -203,5 +226,10 @@ class _NewResultsFetcherWidgetState extends State<NewResultsFetcherWidget> {
               ),
       );
     }));
+  }
+
+  void _savePdf({result, examName, supply}) async {
+    final pdfFile = await PDFAPI().generate(result, examName, supply);
+    PDFAPI().openFile(pdfFile);
   }
 }
