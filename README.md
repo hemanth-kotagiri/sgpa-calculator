@@ -41,20 +41,20 @@ regulations, of all types ( regular and supplementary ).
 
 I have also developed a [RESTful API](https://github.com/hemanth-kotagiri/sgpa-rest-api) for this application
 with which, results of all regular semesters of Freshman, Sophomore, Junior and Senior can be fetched.
+Here's the [API Documentation](https://hemanth-kotagiri.github.io/sgpa-rest-api-docs).
 
-### Upcoming Features
+### Features
 
-More features to this application are on their way, some of them are :
-
-- [x] Results of all exams
+- [x] Results of all exams - _**I mean, every single one of them.**_
   - [x] Support for all regulations.
   - [x] Regular Results.
   - [x] Supplementary Results.
   - [x] Advance Supplementary Results.
   - [x] RC/RV Results.
-- [x] A special results page specifically for R18 Regular Exam Results.
-- [x] Latest Notifications from JNTUH
+- [x] special results page specifically for R18 Regular Exam Results.
+- [x] Latest Notifications from JNTUH.
 - [x] Database integration - Ability to store the results that have already been fetched/calculated.
+- [x] Export result as PDF.
 
 ### Alpha Testers & UI/UX
 
@@ -62,6 +62,8 @@ More features to this application are on their way, some of them are :
 - [Akash Reddy](https://github.com/Akashreddy9876)
 
 Feel free to contribute to this project in whatever way you wish to! PRs are also welcome!
+
+<a href="https://www.flaticon.com/free-icons/grade" title="grade icons">Grade icons created by DinosoftLabs - Flaticon</a>
 
 [MIT License](LICENSE) - Copyright (c) 2022 Hemanth Kotagiri
 

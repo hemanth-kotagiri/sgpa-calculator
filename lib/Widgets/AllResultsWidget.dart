@@ -37,6 +37,7 @@ class _AllResultsListState extends State<AllResultsList> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   controller: _filterController,
+                  autofocus: true,
                   decoration: InputDecoration(
                     suffixIcon: IconButton(
                       icon: Icon(Icons.clear),
