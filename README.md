@@ -26,7 +26,7 @@ regulations, of all types ( regular and supplementary ).
   <img src="images/img2.jpg" alt="Image 2" width="250">
   <img src="images/img4.jpg" alt="Image 4" width="250">
   <img src="images/img5.png" alt="Image 5" width="250">
-  <img src="images/img6.png" alt="Image 6" width="250">
+  <img src="images/img6.jpg" alt="Image 6" width="250">
   <img src="images/img3.png" alt="Image 3" width="250">
 </p>
 
@@ -39,6 +39,13 @@ regulations, of all types ( regular and supplementary ).
 <p align="center">
   <img src="images/individual1.jpg" width="250">
   <img src="images/individual2.jpg" width="250">
+</p>
+
+### Generated PDF File
+
+<p align="center">
+  <img src="images/pdf_image.jpg" width="250">
+  <img src="images/pdf_full_image.jpg" width="400">
 </p>
 
 ### Backend
