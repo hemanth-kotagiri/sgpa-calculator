@@ -13,6 +13,8 @@ class SupplyResultsDisplayWidget extends StatefulWidget {
 
 class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
     with AutomaticKeepAliveClientMixin {
+  bool toggleSearch = false;
+
   @override
   bool get wantKeepAlive => true;
 
@@ -21,6 +23,14 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
     super.build(context);
     return Scaffold(
       drawer: NavBar(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.search),
+        onPressed: () {
+          setState(() {
+            this.toggleSearch = true;
+          });
+        },
+      ),
       appBar: AppBar(
         title: Text(
           "Supplementary Exams",
@@ -41,6 +51,7 @@ class _SupplyResultsDisplayWidget extends State<SupplyResultsDisplayWidget>
               return AllResultsList(
                 data: snapshot.data,
                 titleText: "Supplementary Results",
+                isSearching: toggleSearch,
               );
             }
           }),

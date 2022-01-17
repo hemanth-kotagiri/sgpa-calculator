@@ -13,6 +13,8 @@ class RegularResultsDisplayWidget extends StatefulWidget {
 
 class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
     with AutomaticKeepAliveClientMixin {
+  bool toggleSearch = false;
+
   @override
   bool get wantKeepAlive => true;
 
@@ -20,6 +22,14 @@ class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.search),
+        onPressed: () {
+          setState(() {
+            this.toggleSearch = true;
+          });
+        },
+      ),
       drawer: NavBar(),
       appBar: AppBar(
         title: Text(
@@ -41,6 +51,7 @@ class _RegularResultsDisplayWidget extends State<RegularResultsDisplayWidget>
               return AllResultsList(
                 data: snapshot.data,
                 titleText: "Regular Results",
+                isSearching: toggleSearch,
               );
             }
           }),

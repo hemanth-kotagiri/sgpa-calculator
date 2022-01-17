@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sgpa_calc/Services/SavePdfAPI.dart';
 import 'package:sgpa_calc/Widgets/ResultsPageWidget.dart';
 import 'package:sgpa_calc/Services/FetchResult.dart';
 import 'package:sgpa_calc/Widgets/NavBar.dart';
@@ -17,6 +18,16 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
   TextEditingController _dobController = TextEditingController();
   TextEditingController _yearController = TextEditingController();
   bool _isPressed = false;
+  Map<String, String> examNames = {
+    "1,1": "B.Tech I Year I Semester (R18) Examinations Results",
+    "1,2": "B.Tech I Year II Semester (R18) Examinations Results",
+    "2,1": "B.Tech II Year I Semester (R18) Examinations Results",
+    "2,2": "B.Tech II Year II Semester (R18) Examinations Results",
+    "3,1": "B.Tech III Year I Semester (R18) Examinations Results",
+    "3,2": "B.Tech III Year II Semester (R18) Examinations Results",
+    "4,1": "B.Tech IV Year I Semester (R18) Examinations Results",
+    "4,2": "B.Tech IV Year II Semester (R18) Examinations Results",
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -192,20 +203,49 @@ class _ResultsFetcherWidgetState extends State<ResultsFetcherWidget> {
     setState(() {
       _isPressed = false;
     });
+    print(result);
+    print(_yearController);
+    print(examNames[_yearController]);
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(
-            "RESULT",
-            style: TextStyle(color: Colors.cyan),
+          title: Row(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Spacer(),
+              Text(
+                "RESULT",
+                style: TextStyle(color: Colors.cyan),
+              ),
+              Spacer(),
+              IconButton(
+                icon: Icon(
+                  Icons.save,
+                  size: 32.0,
+                ),
+                onPressed: () {
+                  _savePdf(
+                    result: result,
+                    examName: examNames[_yearController.text],
+                    supply: false,
+                  );
+                },
+              )
+            ],
           ),
-          centerTitle: true,
         ),
         body: ResultsPage(
           result: result,
         ),
       );
     }));
+  }
+
+  void _savePdf({List result, examName, supply}) async {
+    final pdfFile = await PDFAPI().generate(result, examName, supply);
+    PDFAPI().openFile(pdfFile);
   }
 }
