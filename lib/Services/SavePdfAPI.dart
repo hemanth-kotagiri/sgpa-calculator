@@ -150,6 +150,7 @@ class PDFAPI {
       {String name, pw.Document pdf, String examName}) async {
     final bytes = await pdf.save();
 
+    examName = examName.replaceAll(r'/', ' '); // replacing for rc/rv
     final dir = await getApplicationDocumentsDirectory();
     final file = File('${dir.path}/$name-$examName.pdf');
 
