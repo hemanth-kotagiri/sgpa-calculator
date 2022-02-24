@@ -63,9 +63,10 @@ Here's the [API Documentation](https://hemanth-kotagiri.github.io/sgpa-rest-api-
   - [x] Advance Supplementary Results.
   - [x] RC/RV Results.
 - [x] special results page specifically for R18 Regular Exam Results.
-- [x] Latest Notifications from JNTUH.
+- [x] Latest Result Notifications from JNTUH.
 - [x] Database integration - Ability to store the results that have already been fetched/calculated.
-- [x] Export result as PDF.
+- [x] Distributed Caching - Powered by Redis.
+- [x] Export the result as PDF.
 
 ### Alpha Testers & UI/UX
 
