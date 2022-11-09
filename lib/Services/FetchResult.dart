@@ -1,6 +1,8 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 
+import 'package:sgpa_calc/constants.dart';
+
 class ResultFetcher {
   String hallticket, dob, year;
 
@@ -8,8 +10,7 @@ class ResultFetcher {
 
   Future<List<dynamic>> fetchResult() async {
     List result;
-    var url = Uri.parse(
-        "https://results-restapi.herokuapp.com/calculate/$hallticket/$dob/$year");
+    var url = Uri.parse(ENDPOINT + "/calculate/$hallticket/$dob/$year");
     Response response = await get(url);
     result = jsonDecode(response.body);
     return result;
@@ -17,7 +18,7 @@ class ResultFetcher {
 
   Future<List<dynamic>> fetchAllSupplyResultsLinks() async {
     List supplyResults;
-    var url = Uri.parse("https://results-restapi.herokuapp.com/new/all/supply");
+    var url = Uri.parse(ENDPOINT + "/new/all/supply");
     Response response = await get(url);
     supplyResults = jsonDecode(response.body);
     return supplyResults;
@@ -25,8 +26,7 @@ class ResultFetcher {
 
   Future<List<dynamic>> fetchAllRegularResultsLinks() async {
     List supplyResults;
-    var url =
-        Uri.parse("https://results-restapi.herokuapp.com/new/all/regular");
+    var url = Uri.parse(ENDPOINT + "/new/all/regular");
     Response response = await get(url);
     supplyResults = jsonDecode(response.body);
     return supplyResults;
@@ -41,8 +41,8 @@ class ResultFetcher {
       String result,
       String type}) async {
     List resultResponseList;
-    var url =
-        'https://results-restapi.herokuapp.com/api?hallticket=$hallticket&dob=$dob&degree=$degree&examCode=$examCode';
+    var url = ENDPOINT +
+        '/api?hallticket=$hallticket&dob=$dob&degree=$degree&examCode=$examCode';
     if (result != "") {
       url += '&result=$result';
     }
@@ -52,6 +52,7 @@ class ResultFetcher {
     if (type != '') {
       url += '&type=$type';
     }
+    print(url);
     var newUrl = Uri.parse(url);
     Response response = await get(newUrl);
     resultResponseList = jsonDecode(response.body);
@@ -67,8 +68,8 @@ class ResultFetcher {
       String result,
       String type}) async {
     List resultResponseList;
-    var url =
-        'https://results-restapi.herokuapp.com/api/calculate?hallticket=$hallticket&dob=$dob&degree=$degree&examCode=$examCode';
+    var url = ENDPOINT +
+        '/api/calculate?hallticket=$hallticket&dob=$dob&degree=$degree&examCode=$examCode';
     if (result != "") {
       url += '&result=$result';
     }
@@ -85,7 +86,7 @@ class ResultFetcher {
   }
 
   Future<List<dynamic>> fetchNotifications() async {
-    var url = Uri.parse('https://results-restapi.herokuapp.com/notifications');
+    var url = Uri.parse(ENDPOINT + '/notifications');
     Response response = await get(url);
     List data = jsonDecode(response.body);
     return data;

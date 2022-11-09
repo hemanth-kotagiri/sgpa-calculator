@@ -10,8 +10,10 @@ final gradeScores = {
   "F": 0,
 };
 
+const ENDPOINT = "https://results-restapi.up.railway.app";
+
 final branchCourses = {
- "Electronics and Communication Engineering": {
+  "Electronics and Communication Engineering": {
     "Antennas and Propagation": 4,
     "Digital Signal Processing": 4,
     "VLSI Design": 4,
